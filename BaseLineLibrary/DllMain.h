@@ -12,6 +12,7 @@ struct CheckResultExport {
     int checkType;
     char regPath[512];
     char valueName[256];
+
     char auditCategory[256];
     char auditSubcategory[256];
     int valueType;

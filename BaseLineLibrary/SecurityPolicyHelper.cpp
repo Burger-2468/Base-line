@@ -47,7 +47,7 @@ bool SecurityPolicyHelper::ExecuteAuditpolCommand(const std::string& command, st
         ss << buffer;
     }
 
-    output = ss.str();
+    output = ss.str();//把结果放到引用类型数据中
 
     // 清理资源
     CloseHandle(hReadPipe);

@@ -354,6 +354,15 @@ bool SecurityChecker::RepairAll(std::vector<CheckResult>& results) {
     return allSuccess;
 }
 
+// 检测单个项，返回CheckResult
+CheckResult CheckOne() {
+
+}
+
+// 修复单个项，返回是否修复成功
+bool RepairOne(CheckResult& result) {
+
+}
 
 // 解析注册表路径，返回根键和路径
 bool SecurityChecker::GenerateReport(const std::vector<CheckResult>& results, const std::string& filePath) {
