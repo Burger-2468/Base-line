@@ -15,7 +15,7 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char
 	//设置返回值类型
 	if (itemType == "DWORD") { 
 		rule.valueType = ValueType::DWORD;
-		char *end;
+		char *end;//转成数字
 		rule.standardDword = std::strtol(expectedValue,&end,10);
 	}
 	else if (itemType == "STRING"){
@@ -31,17 +31,29 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char
 		
 	//执行检测函数
 	rule = SecurityChecker::CheckOne(rule);
-	//返回是否符合成功
-	if(strcmp(rule.currentString,""))
 
-	//返回当前值
-	std::string ansiStr = WideToAnsi(rule.currentString);
-	strcpy(result.value,ansiStr.c_str());
+	//返回是否符合成功
+	if(rule.isCompliant == false && rule.isTrueDetect){
+		result.status = 1;//返回错误
+		std::string ansiStr = WideToAnsi(rule.currentString);
+		strcpy(result.value, ansiStr.c_str());
+	}
+	else if (rule.isCompliant == true && rule.isTrueDetect == true) {
+		result.status = 0;//返回正确
+		//返回当前值
+		std::string ansiStr = WideToAnsi(rule.currentString);
+		strcpy(result.value, ansiStr.c_str());
+	}
+	else {
+		result.status = 2;//检测失败
+		strcpy(result.value, "检测失败");
+	}
 
 	return result;
 }
 
-extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(const char* auditCategory, const char* auditSubcategory,
+extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
+	const char* auditCategory, const char* auditSubcategory,
 	const int expectedValue) {
 	CheckResult_CSharp result;
 	CheckResult rule;
@@ -55,7 +67,26 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(const char
 	rule.auditSubcategory = AnsiToWide(Asup);
 
 
+
+
 	rule = SecurityChecker::CheckOne(rule);
+
+	//返回是否符合成功
+	if (rule.isCompliant == false && rule.isTrueDetect) {
+		result.status = 1;//返回错误
+		std::string ansiStr = WideToAnsi(rule.currentString);
+		strcpy(result.value, ansiStr.c_str());
+	}
+	else if (rule.isCompliant == true && rule.isTrueDetect == true) {
+		result.status = 0;//返回正确
+		//返回当前值
+		std::string ansiStr = WideToAnsi(rule.currentString);
+		strcpy(result.value, ansiStr.c_str());
+	}
+	else {
+		result.status = 2;//检测失败
+		strcpy(result.value, "检测失败");
+	}
 	return result;
 }
 

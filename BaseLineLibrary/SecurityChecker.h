@@ -24,6 +24,7 @@ struct CheckResult {
     //
     std::wstring currentString;  // 当前值（字符串形式）
     bool isCompliant;           // 是否符合标准
+    bool isTrueDetect;            // 是否检测到了
     bool repairSuccess;         // 修复是否成功
 };
 
