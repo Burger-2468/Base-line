@@ -33,7 +33,8 @@ std::string WideToAnsi(const std::wstring& wstr) {
 }
 
 SecurityChecker::SecurityChecker() {
-    m_checkItems = {
+    m_checkItems = {//这是一个数据结构，用来存储所有需要检查的项
+        // 名称，类型，路径，值名称，值数据，值类型，期望值，期望值数据，备注，是否启用，是否忽略
         // 账户策略
         { L"检查源路由配置", CheckType::Registry,
           L"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters",
