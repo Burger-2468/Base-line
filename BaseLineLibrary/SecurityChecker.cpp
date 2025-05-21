@@ -355,8 +355,60 @@ bool SecurityChecker::RepairAll(std::vector<CheckResult>& results) {
 }
 
 // 检测单个项，返回CheckResult
-CheckResult CheckOne() {
+CheckResult SecurityChecker::CheckOne(CheckResult rule) {
+    CheckResult result = rule;
 
+    if (rule.checkType == CheckType::Registry) {
+        HKEY rootKey;
+        std::wstring keyPath;
+        //std::wstring wideRegPath = AnsiToWide(rule.regPath);
+        if (!ParseRegPath(rule.regPath, rootKey, keyPath)) {
+            // 路径解析失败
+            result.currentString = L"路径解析失败";
+            result.isCompliant = false;
+            return result;
+        }
+        //std::wstring wideValueName = AnsiToWide(rule.valueName);
+        RegistryHelper helper(rootKey, keyPath, rule.valueName);
+        result.currentString = AnsiToWide(helper.ReadValue("", true)); // createIfMissing设为true自动创建路径
+
+        if (rule.valueType == ValueType::DWORD) {
+            try {
+                DWORD currentValue = std::stoul(result.currentString);
+                // 处理特殊标准值（如远程桌面端口要求不等于3389）
+                if (rule.standardString == L"!3389") {
+                    result.isCompliant = (currentValue != 3389);
+                }
+                else {
+                    result.isCompliant = (currentValue == rule.standardDword);
+                }
+            }
+            catch (...) {
+                result.isCompliant = false;
+            }
+        }
+        else {
+            // 字符串类型直接比较（适用于路径、账户列表等）
+            result.isCompliant = (result.currentString == rule.standardString);
+        }
+    }
+    else if (rule.checkType == CheckType::AuditPolicy) {
+        bool auditSuccess = false;
+        bool auditFailure = false;
+
+        if (SecurityPolicyHelper::GetAuditPolicy(WideToAnsi(rule.auditCategory), WideToAnsi(rule.auditSubcategory),
+            auditSuccess, auditFailure)) {
+            DWORD currentValue = (auditSuccess ? 1 : 0) + (auditFailure ? 2 : 0);
+            result.currentString = AnsiToWide(std::to_string(currentValue));
+            result.isCompliant = (currentValue == rule.standardDword);
+        }
+        else {
+            result.currentString = L"无法获取";
+            result.isCompliant = false;
+        }
+    }
+
+    return result;
 }
 
 // 修复单个项，返回是否修复成功
