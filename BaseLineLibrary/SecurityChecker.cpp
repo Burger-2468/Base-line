@@ -9,7 +9,7 @@ bool ParseRegPath(const std::wstring& fullPath, HKEY& rootKey, std::wstring& key
 
     std::wstring rootStr = fullPath.substr(0, pos);
     keyPath = fullPath.substr(pos + 1);
-
+    //把keyPath中的反斜杠转为正斜杠
     if (rootStr == L"HKEY_LOCAL_MACHINE") rootKey = HKEY_LOCAL_MACHINE;
     else if (rootStr == L"HKEY_CURRENT_USER") rootKey = HKEY_CURRENT_USER;
     else return false;
@@ -410,6 +410,8 @@ CheckResult SecurityChecker::CheckOne(CheckResult rule) {
 
     return result;
 }
+
+
 
 // 修复单个项，返回是否修复成功
 bool RepairOne(CheckResult& result) {
