@@ -33,10 +33,9 @@ namespace BaseLineGUI.RulesLoader
             foreach (XmlNode auditPolicyNode in auditPolicyNodes)
             {
                 string itemName = auditPolicyNode.SelectSingleNode("item-name").InnerText;
-                string category = auditPolicyNode.SelectSingleNode("category").InnerText;
                 string subCategory = auditPolicyNode.SelectSingleNode("sub-category").InnerText;
                 int expectedValue = int.Parse(auditPolicyNode.SelectSingleNode("expected-value").InnerText);
-                AuditPolicyRule rule = new AuditPolicyRule(itemName, category, subCategory, expectedValue);
+                AuditPolicyRule rule = new AuditPolicyRule(itemName, subCategory, expectedValue);
                 auditPolicyRules.Add(rule);
             }
             return auditPolicyRules;
