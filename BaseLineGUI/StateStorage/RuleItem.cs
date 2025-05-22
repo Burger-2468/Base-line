@@ -13,7 +13,6 @@ namespace BaseLineGUI.StateStorage
         private readonly string itemName;
         private bool isSelectedToFix = false;
         private CheckResult checkResult = CheckResult.NotChecked;
-        private string detectedValue = "";
         private readonly string page;
 
         protected RuleItem(string itemName, string page)
@@ -46,15 +45,6 @@ namespace BaseLineGUI.StateStorage
         {
             get { return checkResult; }
             set { checkResult = value; }
-        }
-
-        /// <summary>
-        /// 检测到的值
-        /// </summary>
-        public string DetectedValue
-        {
-            get { return detectedValue; }
-            set { detectedValue = value; }
         }
 
         /// <summary>

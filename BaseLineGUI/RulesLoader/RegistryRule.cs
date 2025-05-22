@@ -11,6 +11,7 @@ namespace BaseLineGUI.RulesLoader
         private readonly string registryName;
         private readonly string valueType;
         private readonly string expectedValue;
+        private string detectedValue = "(未知)";
 
         public RegistryRule(string itemName, string registryPath, string registryName, string valueType, string expectedValue, string page)
             : base(itemName, page)
@@ -51,6 +52,15 @@ namespace BaseLineGUI.RulesLoader
         public string ExpectedValue
         {
             get { return expectedValue; }
+        }
+
+        /// <summary>
+        /// 检测到的值
+        /// </summary>
+        public string DetectedValue
+        {
+            get { return detectedValue; }
+            set { detectedValue = value; }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace BaseLineGUI
                         rule1.RegistryPath,
                         rule1.RegistryName,
                         rule1.ExpectedValue,
-                        rule.DetectedValue,
+                        rule1.DetectedValue,
                         CheckResultClass.GetCheckResultName(rule.CheckResult),
                         false
                     );
@@ -40,7 +40,7 @@ namespace BaseLineGUI
                         "",
                         rule2.SubCategory,
                         rule2.ExpectedValueString,
-                        rule.DetectedValue,
+                        rule2.DetectedValueString,
                         CheckResultClass.GetCheckResultName(rule.CheckResult),
                         true
                     );
