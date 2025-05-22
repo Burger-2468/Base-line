@@ -57,5 +57,23 @@ namespace BaseLineGUI
             this.dataGridOverview.AutoResizeColumn(5);
             this.dataGridOverview.AutoResizeColumn(6);
         }
+
+        /// <summary>
+        /// 处理用户点击复选框选中规则的操作
+        /// </summary>
+        private void dataGridOverview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 7)
+            {
+                // 获取当前行
+                DataGridViewRow row = this.dataGridOverview.Rows[e.RowIndex];
+                // 获取当前行的规则项
+                RuleItem rule = RulesStorage.GetRules()[e.RowIndex];
+                // 改变选中状态
+                rule.IsSelectedToFix = !rule.IsSelectedToFix;
+                // 更新选中状态
+                row.Cells[7].Value = rule.IsSelectedToFix;
+            }
+        }
     }
 }

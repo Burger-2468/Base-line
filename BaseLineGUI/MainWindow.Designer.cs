@@ -138,6 +138,7 @@
             this.dataGridOverview.RowTemplate.Height = 30;
             this.dataGridOverview.Size = new System.Drawing.Size(1754, 535);
             this.dataGridOverview.TabIndex = 0;
+            this.dataGridOverview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridOverview_CellClick);
             // 
             // tabPage2
             // 
