@@ -14,30 +14,32 @@ namespace BaseLineGUI
 
         private void MainWindow_Load(object sender, System.EventArgs e)
         {
+            // 将规则列表中的规则项添加到DataGridView中
             List<RuleItem> rules = RulesStorage.GetRules();
             foreach (RuleItem rule in rules)
             {
-                if (rule is RegistryRule rule2)
+                // 分不同规则类型进行处理
+                if (rule is RegistryRule rule1)
                 {
                     this.dateGridOverview.Rows.Add(
-                        rule2.ItemName,
+                        rule.ItemName,
                         "注册表",
-                        rule2.RegistryPath,
-                        rule2.RegistryName,
-                        rule2.ExpectedValue,
+                        rule1.RegistryPath,
+                        rule1.RegistryName,
+                        rule1.ExpectedValue,
                         rule.DetectedValue,
                         CheckResultClass.GetCheckResultName(rule.CheckResult),
                         false
                     );
                 }
-                else if (rule is AuditPolicyRule rule1)
+                else if (rule is AuditPolicyRule rule2)
                 {
                     this.dateGridOverview.Rows.Add(
-                        rule1.ItemName,
+                        rule.ItemName,
                         "审计策略",
                         "",
-                        rule1.SubCategory,
-                        rule1.ExpectedValue,
+                        rule2.SubCategory,
+                        rule2.ExpectedValueString,
                         rule.DetectedValue,
                         CheckResultClass.GetCheckResultName(rule.CheckResult),
                         true

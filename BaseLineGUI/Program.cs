@@ -51,8 +51,6 @@ namespace BaseLineGUI
             {
                 StateStorage.RulesStorage.AddRule(rule);
             }
-            // MessageBox.Show(registryRules.ToString());
-            // MessageBox.Show(auditPolicyRules.ToString());
             // 显示程序窗口
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

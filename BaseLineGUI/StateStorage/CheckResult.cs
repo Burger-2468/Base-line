@@ -5,6 +5,9 @@ using System.Text;
 
 namespace BaseLineGUI.StateStorage
 {
+    /// <summary>
+    /// 检测结果，使用CheckResultClass中的方法来转换为字符串
+    /// </summary>
     public enum CheckResult
     {
         NotChecked,
@@ -15,6 +18,9 @@ namespace BaseLineGUI.StateStorage
         FixFailed
     }
 
+    /// <summary>
+    /// 提供了将CheckResult转换为字符串的方法
+    /// </summary>
     public class CheckResultClass
     {
         public static string GetCheckResultName(CheckResult result)

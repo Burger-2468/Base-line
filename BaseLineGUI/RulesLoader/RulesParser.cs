@@ -3,8 +3,14 @@ using System.Xml;
 
 namespace BaseLineGUI.RulesLoader
 {
+    /// <summary>
+    /// 提供从XML文件中读取规则列表的功能
+    /// </summary>
     public class RulesParser
     {
+        /// <summary>
+        /// 读取XML文件，解析注册表规则项
+        /// </summary>
         public static List<RegistryRule> ParseRegistryRules(string path)
         {
             XmlDocument xmlDocument = new XmlDocument();
@@ -25,6 +31,9 @@ namespace BaseLineGUI.RulesLoader
             return registryRules;
         }
 
+        /// <summary>
+        /// 读取XML文件，解析审计策略规则项
+        /// </summary>
         public static List<AuditPolicyRule> ParseAuditPolicyRule(string path)
         {
             XmlDocument xmlDocument = new XmlDocument();
