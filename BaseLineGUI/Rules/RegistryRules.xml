@@ -1,0 +1,9 @@
+<registry-rules>
+  <rule-item>
+    <item-name>检查可远程访问的注册表路径和子路径</item-name>
+    <registry-path>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurePipeServers\winreg\AllowedPaths</registry-path>
+    <registry-name>Machine</registry-name>
+    <value-type>REG_SZ</value-type>
+    <expected-value></expected-value>
+  </rule-item>
+</registry-rules>
