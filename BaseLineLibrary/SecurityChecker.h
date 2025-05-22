@@ -35,10 +35,12 @@ public:
     bool RepairAll(std::vector<CheckResult>& results);// 修复所有项并返回结果
 
     static CheckResult CheckOne(CheckResult rule); // 检查单个项并返回结果
-    static bool RepairOne(CheckResult& result);// 修复单个项并返回结果
+    static CheckResult RepairOne(CheckResult& result);// 修复单个项并返回结果
 
     bool GenerateReport(const std::vector<CheckResult>& results, const std::string& filePath);// 生成报告并保存到文件
 
 private:
     std::vector<CheckResult> m_checkItems;
 };
+
+

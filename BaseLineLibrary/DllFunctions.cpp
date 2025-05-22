@@ -110,11 +110,61 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
 }
 
 extern "C" __declspec(dllexport) bool FixRegistryRule(const char* registryPath, const char* itemName, const char* itemType, const char* expectedValue) {
+	CheckResult rule;
+	// 设置为注册表类型
+	rule.checkType = CheckType::Registry;
+
+	// 转换并设置注册表路径和名称
+	std::string wpath(registryPath);
+	rule.regPath = AnsiToWide(wpath);
+
+	std::string wIName(itemName);
+	rule.valueName = AnsiToWide(wIName);
+
+	// 设置值类型和期望值
+	if (strcmp(itemType, "DWORD") == 0) {
+		rule.valueType = ValueType::DWORD;
+		rule.standardDword = std::strtol(expectedValue, nullptr, 10);
+	}
+	else if (strcmp(itemType, "STRING") == 0) {
+		rule.valueType = ValueType::STRING;
+		std::string expV(expectedValue);
+		rule.standardString = AnsiToWide(expV);
+	}
+	else {
+		return false; // 不支持的类型，修复失败
+	}
+
+	// 执行修复函数
+	rule = SecurityChecker::RepairOne(rule);
 
 
+
+	return rule.repairSuccess;
 }
 
 extern "C" __declspec(dllexport) bool FixAuditpolRule(const char* auditCategory, const char* auditSubcategory, const int expectedValue){
+	CheckResult rule;
+	// 设置为审核策略类型
+	rule.checkType = CheckType::AuditPolicy;
+
+	// 转换并设置审核策略类别和子类别
+	std::string cat(auditCategory);
+	rule.auditCategory = AnsiToWide(cat);
+
+	std::string subcat(auditSubcategory);
+	rule.auditSubcategory = AnsiToWide(subcat);
+
+	// 设置值类型和期望值
+	rule.valueType = ValueType::DWORD;
+	rule.standardDword = expectedValue;
+
+	// 执行修复函数
+	rule = SecurityChecker::RepairOne(rule);
 
 
-	}
+
+	return rule.repairSuccess;
+}
+
+
