@@ -109,7 +109,11 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
 	return result;
 }
 
-extern "C" __declspec(dllexport) bool FixRegistryRule(const char* registryPath, const char* itemName, const char* itemType, const char* expectedValue) {
+extern "C" __declspec(dllexport) CheckResult_CSharp FixRegistryRule(const char* registryPath, const char* itemName, const char* itemType, const char* expectedValue) {
+	CheckResult_CSharp result;
+	result.status = 2; // 初始化为检测失败
+	strncpy_s(result.value, sizeof(result.value), "初始化失败", _TRUNCATE);
+
 	CheckResult rule;
 	// 设置为注册表类型
 	rule.checkType = CheckType::Registry;
@@ -132,18 +136,39 @@ extern "C" __declspec(dllexport) bool FixRegistryRule(const char* registryPath, 
 		rule.standardString = AnsiToWide(expV);
 	}
 	else {
-		return false; // 不支持的类型，修复失败
+		result.status = 2;
+		strncpy_s(result.value, sizeof(result.value), "不支持的类型，修复失败", _TRUNCATE);
+		return result;
 	}
 
 	// 执行修复函数
 	rule = SecurityChecker::RepairOne(rule);
 
+	// 转换CheckResult到CheckResult_CSharp
+	if (rule.repairSuccess) {
+		if (rule.isCompliant) {
+			result.status = 0; // 修复成功且合规
+		}
+		else {
+			result.status = 1; // 修复成功但不合规
+		}
+	}
+	else {
+		result.status = 2; // 修复失败
+	}
 
+	// 转换宽字符当前值到ANSI并复制
+	std::string ansiCurrent = WideToAnsi(rule.currentString);
+	strncpy_s(result.value, sizeof(result.value), ansiCurrent.c_str(), _TRUNCATE);
 
-	return rule.repairSuccess;
+	return result;
 }
 
-extern "C" __declspec(dllexport) bool FixAuditpolRule(const char* auditCategory, const char* auditSubcategory, const int expectedValue){
+extern "C" __declspec(dllexport) CheckResult_CSharp FixAuditpolRule(const char* auditCategory, const char* auditSubcategory, const int expectedValue) {
+	CheckResult_CSharp result;
+	result.status = 2;
+	strncpy_s(result.value, sizeof(result.value), "初始化失败", _TRUNCATE);
+
 	CheckResult rule;
 	// 设置为审核策略类型
 	rule.checkType = CheckType::AuditPolicy;
@@ -162,9 +187,22 @@ extern "C" __declspec(dllexport) bool FixAuditpolRule(const char* auditCategory,
 	// 执行修复函数
 	rule = SecurityChecker::RepairOne(rule);
 
+	// 转换CheckResult到CheckResult_CSharp
+	if (rule.repairSuccess) {
+		if (rule.isCompliant) {
+			result.status = 0; // 修复成功且合规
+		}
+		else {
+			result.status = 1; // 修复成功但不合规
+		}
+	}
+	else {
+		result.status = 2; // 修复失败
+	}
 
+	// 转换宽字符当前值到ANSI并复制
+	std::string ansiCurrent = WideToAnsi(rule.currentString);
+	strncpy_s(result.value, sizeof(result.value), ansiCurrent.c_str(), _TRUNCATE);
 
-	return rule.repairSuccess;
+	return result;
 }
-
-
