@@ -393,8 +393,8 @@ CheckResult SecurityChecker::CheckOne(CheckResult rule) {
         }
     }
     else if (rule.checkType == CheckType::AuditPolicy) {
-        bool auditSuccess = false;
-        bool auditFailure = false;
+        bool auditSuccess = false;//成功事件1:0
+        bool auditFailure = false;//失败事件2:0
 
         if (SecurityPolicyHelper::GetAuditPolicy(WideToAnsi(rule.auditCategory), WideToAnsi(rule.auditSubcategory),
             auditSuccess, auditFailure)) {
@@ -404,7 +404,7 @@ CheckResult SecurityChecker::CheckOne(CheckResult rule) {
         }
         else {
             result.currentString = L"无法获取";
-            result.isCompliant = false;
+            result.isTrueDetect = false;
         }
     }
 

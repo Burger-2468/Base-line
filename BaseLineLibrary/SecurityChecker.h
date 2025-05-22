@@ -23,9 +23,9 @@ struct CheckResult {
     std::wstring standardString; // 标准字符串值（DWORD类型时无效）
     //
     std::wstring currentString;  // 当前值（字符串形式）
-    bool isCompliant;           // 是否符合标准
-    bool isTrueDetect;            // 是否检测到了
-    bool repairSuccess;         // 修复是否成功
+    bool isCompliant;           // 是否符合标准,符合true,不符合false
+    bool isTrueDetect;            // 是否检测到了,到了true,没false
+    bool repairSuccess;         // 修复是否成功,成功true,失败false
 };
 
 class SecurityChecker {

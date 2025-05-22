@@ -61,7 +61,7 @@ bool SecurityPolicyHelper::ExecuteAuditpolCommand(const std::string& command, st
 bool SecurityPolicyHelper::GetAuditPolicy(const std::string& auditCategory,
     const std::string& auditSubcategory,
     bool& auditSuccess, bool& auditFailure) {
-    std::string command = "/get /category:\"" + auditCategory + "\" /subcategory:\"" + auditSubcategory + "\"";
+    std::string command = "/get /category:" + auditCategory + " /subcategory:" + auditSubcategory ;
     std::string output;
 
     if (!ExecuteAuditpolCommand(command, output)) {

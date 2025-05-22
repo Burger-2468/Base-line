@@ -25,20 +25,20 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char
 	}
 	else {
 		result.status = 2;//检测失败
-		strcpy(result.value, "");		
+		strcpy(result.value, "返回值类型设置错误，检测失败");		
 		return result;
 	};
 		
 	//执行检测函数
 	rule = SecurityChecker::CheckOne(rule);
 
-	//返回是否符合成功
-	if(rule.isCompliant == false && rule.isTrueDetect){
+	//返回是否符合成功逻辑
+	if(rule.isTrueDetect && !rule.isCompliant ){
 		result.status = 1;//返回错误
 		std::string ansiStr = WideToAnsi(rule.currentString);
 		strcpy(result.value, ansiStr.c_str());
 	}
-	else if (rule.isCompliant == true && rule.isTrueDetect == true) {
+	else if (rule.isTrueDetect && rule.isCompliant ) {
 		result.status = 0;//返回正确
 		//返回当前值
 		std::string ansiStr = WideToAnsi(rule.currentString);
@@ -52,12 +52,26 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char
 	return result;
 }
 
+char* outputAudit(const int expectedValue) {
+	char* output = new char[100];
+	if (expectedValue == 0) {
+		return strcpy(output, "无审核");
+	}
+	else if (expectedValue == 1) {
+	
+	}
+	else if (expectedValue == 2) {}
+	else if (expectedValue == 3) {}
+
+}
+
+
+
 extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
-	const char* auditCategory, const char* auditSubcategory,
-	const int expectedValue) {
+	const char* auditCategory, const char* auditSubcategory,const int expectedValue) {
 	CheckResult_CSharp result;
 	CheckResult rule;
-	//设置审核策略类型
+	//设置为审核策略类型
 	rule.checkType = CheckType::AuditPolicy;
 	//设置审核策略类别
 	std::string Adp(auditCategory);
@@ -65,23 +79,26 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
 	//设置审核策略子类别
 	std::string Asup(auditSubcategory);
 	rule.auditSubcategory = AnsiToWide(Asup);
-
-
-
+	//设置默认值类型
+	rule.valueType = ValueType::DWORD;
+	//设置期望值
+	rule.standardDword = expectedValue;
 
 	rule = SecurityChecker::CheckOne(rule);
 
 	//返回是否符合成功
-	if (rule.isCompliant == false && rule.isTrueDetect) {
+	if (rule.isTrueDetect && !rule.isCompliant) {
 		result.status = 1;//返回错误
-		std::string ansiStr = WideToAnsi(rule.currentString);
-		strcpy(result.value, ansiStr.c_str());
+		if(expectedValue == 0)
+		/*std::string ansiStr = WideToAnsi(rule.currentString);
+		strcpy(result.value, ansiStr.c_str());*/
 	}
-	else if (rule.isCompliant == true && rule.isTrueDetect == true) {
+	else if (rule.isTrueDetect && rule.isCompliant) {
 		result.status = 0;//返回正确
-		//返回当前值
-		std::string ansiStr = WideToAnsi(rule.currentString);
-		strcpy(result.value, ansiStr.c_str());
+		if(exp)
+		////返回当前值
+		//std::string ansiStr = WideToAnsi(rule.currentString);
+		//strcpy(result.value, ansiStr.c_str());
 	}
 	else {
 		result.status = 2;//检测失败
