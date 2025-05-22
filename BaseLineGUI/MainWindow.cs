@@ -21,7 +21,7 @@ namespace BaseLineGUI
                 // 分不同规则类型进行处理
                 if (rule is RegistryRule rule1)
                 {
-                    this.dateGridOverview.Rows.Add(
+                    this.dataGridOverview.Rows.Add(
                         rule.ItemName,
                         "注册表",
                         rule1.RegistryPath,
@@ -34,7 +34,7 @@ namespace BaseLineGUI
                 }
                 else if (rule is AuditPolicyRule rule2)
                 {
-                    this.dateGridOverview.Rows.Add(
+                    this.dataGridOverview.Rows.Add(
                         rule.ItemName,
                         "审计策略",
                         "",
@@ -50,6 +50,12 @@ namespace BaseLineGUI
                     MessageBox.Show("未知规则类型，请检查规则文件。");
                 }
             }
+            this.dataGridOverview.AutoResizeColumn(0);
+            this.dataGridOverview.AutoResizeColumn(1);
+            this.dataGridOverview.AutoResizeColumn(3);
+            this.dataGridOverview.AutoResizeColumn(4);
+            this.dataGridOverview.AutoResizeColumn(5);
+            this.dataGridOverview.AutoResizeColumn(6);
         }
     }
 }

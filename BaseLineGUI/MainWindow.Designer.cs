@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateGridOverview = new System.Windows.Forms.DataGridView();
+            this.dataGridOverview = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -57,7 +57,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateGridOverview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridOverview)).BeginInit();
             this.panelBottomContainer.SuspendLayout();
             this.bottomButtonsPanel.SuspendLayout();
             this.bottomLeftTextPanel.SuspendLayout();
@@ -105,7 +105,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dateGridOverview);
+            this.tabPage1.Controls.Add(this.dataGridOverview);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
@@ -114,13 +114,13 @@
             this.tabPage1.Text = "全部";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dateGridOverview
+            // dataGridOverview
             // 
-            this.dateGridOverview.AllowUserToAddRows = false;
-            this.dateGridOverview.AllowUserToDeleteRows = false;
-            this.dateGridOverview.AllowUserToResizeRows = false;
-            this.dateGridOverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dateGridOverview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridOverview.AllowUserToAddRows = false;
+            this.dataGridOverview.AllowUserToDeleteRows = false;
+            this.dataGridOverview.AllowUserToResizeRows = false;
+            this.dataGridOverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridOverview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnRuleName,
             this.ColumnItemType,
             this.ColumnPath,
@@ -129,15 +129,15 @@
             this.ColumnDetectedValue,
             this.ColumnDetectResult,
             this.ColumnSelected});
-            this.dateGridOverview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateGridOverview.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dateGridOverview.Location = new System.Drawing.Point(3, 3);
-            this.dateGridOverview.Name = "dateGridOverview";
-            this.dateGridOverview.ReadOnly = true;
-            this.dateGridOverview.RowHeadersWidth = 62;
-            this.dateGridOverview.RowTemplate.Height = 30;
-            this.dateGridOverview.Size = new System.Drawing.Size(1754, 535);
-            this.dateGridOverview.TabIndex = 0;
+            this.dataGridOverview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridOverview.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridOverview.Location = new System.Drawing.Point(3, 3);
+            this.dataGridOverview.Name = "dataGridOverview";
+            this.dataGridOverview.ReadOnly = true;
+            this.dataGridOverview.RowHeadersWidth = 62;
+            this.dataGridOverview.RowTemplate.Height = 30;
+            this.dataGridOverview.Size = new System.Drawing.Size(1754, 535);
+            this.dataGridOverview.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -373,7 +373,7 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dateGridOverview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridOverview)).EndInit();
             this.panelBottomContainer.ResumeLayout(false);
             this.bottomButtonsPanel.ResumeLayout(false);
             this.bottomButtonsPanel.PerformLayout();
@@ -401,7 +401,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.DataGridView dateGridOverview;
+        private System.Windows.Forms.DataGridView dataGridOverview;
         private System.Windows.Forms.Panel tabControlContainerPanel;
         private System.Windows.Forms.Button buttonExportFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRuleName;
