@@ -58,10 +58,14 @@ char* outputAudit(const int expectedValue) {
 		return strcpy(output, "Œﬁ…Û∫À");
 	}
 	else if (expectedValue == 1) {
+		
+	}
+	else if (expectedValue == 2) {
 	
 	}
-	else if (expectedValue == 2) {}
-	else if (expectedValue == 3) {}
+	else if (expectedValue == 3) {
+	
+	}
 
 }
 
