@@ -41,8 +41,16 @@ namespace BaseLineGUI
                 MessageBox.Show($"读取规则文件时发生错误，请检查文件格式。\n\n{e}");
                 return;
             }
-                
-            
+
+            // 将读取到的规则存储到静态类中
+            foreach (var rule in registryRules)
+            {
+                StateStorage.RulesStorage.AddRule(rule);
+            }
+            foreach (var rule in auditPolicyRules)
+            {
+                StateStorage.RulesStorage.AddRule(rule);
+            }
             // MessageBox.Show(registryRules.ToString());
             // MessageBox.Show(auditPolicyRules.ToString());
             // 显示程序窗口

@@ -60,6 +60,9 @@
     <Compile Include="RulesLoader\AuditPolicyRule.cs" />
     <Compile Include="RulesLoader\RegistryRule.cs" />
     <Compile Include="RulesLoader\RulesParser.cs" />
+    <Compile Include="StateStorage\CheckResult.cs" />
+    <Compile Include="StateStorage\RuleItem.cs" />
+    <Compile Include="StateStorage\RulesStorage.cs" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

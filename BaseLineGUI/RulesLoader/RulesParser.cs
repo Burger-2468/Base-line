@@ -18,7 +18,8 @@ namespace BaseLineGUI.RulesLoader
                 string registryName = registryNode.SelectSingleNode("registry-name").InnerText;
                 string valueType = registryNode.SelectSingleNode("value-type").InnerText;
                 string expectedValue = registryNode.SelectSingleNode("expected-value").InnerText;
-                RegistryRule rule = new RegistryRule(itemName, registryPath, registryName, valueType, expectedValue);
+                string page = registryNode.SelectSingleNode("page").InnerText;
+                RegistryRule rule = new RegistryRule(itemName, registryPath, registryName, valueType, expectedValue, page);
                 registryRules.Add(rule);
             }
             return registryRules;
@@ -35,7 +36,8 @@ namespace BaseLineGUI.RulesLoader
                 string itemName = auditPolicyNode.SelectSingleNode("item-name").InnerText;
                 string subCategory = auditPolicyNode.SelectSingleNode("sub-category").InnerText;
                 int expectedValue = int.Parse(auditPolicyNode.SelectSingleNode("expected-value").InnerText);
-                AuditPolicyRule rule = new AuditPolicyRule(itemName, subCategory, expectedValue);
+                string page = auditPolicyNode.SelectSingleNode("page").InnerText;
+                AuditPolicyRule rule = new AuditPolicyRule(itemName, subCategory, expectedValue, page);
                 auditPolicyRules.Add(rule);
             }
             return auditPolicyRules;

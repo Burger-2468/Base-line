@@ -32,22 +32,36 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.fixSelectedButton = new System.Windows.Forms.Button();
-            this.refreshButton = new System.Windows.Forms.Button();
-            this.reportExportButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.dateGridOverview = new System.Windows.Forms.DataGridView();
+            this.ColumnRuleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPropertyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnExpectedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDetectedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDetectResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panelBottomContainer = new System.Windows.Forms.Panel();
+            this.bottomButtonsPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.checkButton = new System.Windows.Forms.Button();
+            this.fixSelectedButton = new System.Windows.Forms.Button();
+            this.selectAllButton = new System.Windows.Forms.Button();
+            this.bottomLeftTextPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tabControlContainerPanel = new System.Windows.Forms.Panel();
+            this.buttonExportFile = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateGridOverview)).BeginInit();
+            this.panelBottomContainer.SuspendLayout();
+            this.bottomButtonsPanel.SuspendLayout();
+            this.bottomLeftTextPanel.SuspendLayout();
+            this.tabControlContainerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -60,7 +74,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1023, 37);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1768, 57);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -70,7 +84,7 @@
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1017, 37);
+            this.label1.Size = new System.Drawing.Size(1762, 57);
             this.label1.TabIndex = 0;
             this.label1.Text = "Windows Server 2016 基线卫士";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,93 +97,219 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 37);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1023, 541);
+            this.tabControl1.Size = new System.Drawing.Size(1768, 573);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dateGridOverview);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1015, 509);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(1760, 541);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "全部";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // dateGridOverview
             // 
-            this.panel1.Controls.Add(this.tableLayoutPanel3);
-            this.panel1.Controls.Add(this.tableLayoutPanel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 504);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1023, 74);
-            this.panel1.TabIndex = 0;
+            this.dateGridOverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dateGridOverview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnRuleName,
+            this.ColumnItemType,
+            this.ColumnPath,
+            this.ColumnPropertyName,
+            this.ColumnExpectedValue,
+            this.ColumnDetectedValue,
+            this.ColumnDetectResult,
+            this.ColumnSelected});
+            this.dateGridOverview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateGridOverview.Location = new System.Drawing.Point(3, 3);
+            this.dateGridOverview.Name = "dateGridOverview";
+            this.dateGridOverview.RowHeadersWidth = 62;
+            this.dateGridOverview.RowTemplate.Height = 30;
+            this.dateGridOverview.Size = new System.Drawing.Size(1754, 535);
+            this.dateGridOverview.TabIndex = 0;
             // 
-            // tableLayoutPanel3
+            // ColumnRuleName
             // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.Controls.Add(this.fixSelectedButton, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.refreshButton, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.reportExportButton, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(543, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(480, 74);
-            this.tableLayoutPanel3.TabIndex = 1;
+            this.ColumnRuleName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColumnRuleName.HeaderText = "规则名";
+            this.ColumnRuleName.MinimumWidth = 8;
+            this.ColumnRuleName.Name = "ColumnRuleName";
+            this.ColumnRuleName.Width = 91;
+            // 
+            // ColumnItemType
+            // 
+            this.ColumnItemType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColumnItemType.HeaderText = "规则类型";
+            this.ColumnItemType.MinimumWidth = 8;
+            this.ColumnItemType.Name = "ColumnItemType";
+            this.ColumnItemType.Width = 91;
+            // 
+            // ColumnPath
+            // 
+            this.ColumnPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ColumnPath.HeaderText = "注册表路径";
+            this.ColumnPath.MinimumWidth = 8;
+            this.ColumnPath.Name = "ColumnPath";
+            this.ColumnPath.Width = 108;
+            // 
+            // ColumnPropertyName
+            // 
+            this.ColumnPropertyName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnPropertyName.HeaderText = "注册表项/Auditpol子类别";
+            this.ColumnPropertyName.MinimumWidth = 8;
+            this.ColumnPropertyName.Name = "ColumnPropertyName";
+            // 
+            // ColumnExpectedValue
+            // 
+            this.ColumnExpectedValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColumnExpectedValue.HeaderText = "期望值";
+            this.ColumnExpectedValue.MinimumWidth = 8;
+            this.ColumnExpectedValue.Name = "ColumnExpectedValue";
+            this.ColumnExpectedValue.Width = 91;
+            // 
+            // ColumnDetectedValue
+            // 
+            this.ColumnDetectedValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColumnDetectedValue.HeaderText = "检测值";
+            this.ColumnDetectedValue.MinimumWidth = 8;
+            this.ColumnDetectedValue.Name = "ColumnDetectedValue";
+            this.ColumnDetectedValue.Width = 91;
+            // 
+            // ColumnDetectResult
+            // 
+            this.ColumnDetectResult.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColumnDetectResult.HeaderText = "检测结果";
+            this.ColumnDetectResult.MinimumWidth = 8;
+            this.ColumnDetectResult.Name = "ColumnDetectResult";
+            this.ColumnDetectResult.Width = 91;
+            // 
+            // ColumnSelected
+            // 
+            this.ColumnSelected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColumnSelected.HeaderText = "勾选";
+            this.ColumnSelected.MinimumWidth = 8;
+            this.ColumnSelected.Name = "ColumnSelected";
+            this.ColumnSelected.Width = 45;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(1224, 390);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "账户策略";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Size = new System.Drawing.Size(1224, 390);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "日志";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Size = new System.Drawing.Size(1224, 390);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "网络配置";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 28);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage5.Size = new System.Drawing.Size(1224, 390);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "其他配置";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panelBottomContainer
+            // 
+            this.panelBottomContainer.Controls.Add(this.bottomButtonsPanel);
+            this.panelBottomContainer.Controls.Add(this.bottomLeftTextPanel);
+            this.panelBottomContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottomContainer.Location = new System.Drawing.Point(0, 630);
+            this.panelBottomContainer.Name = "panelBottomContainer";
+            this.panelBottomContainer.Size = new System.Drawing.Size(1768, 99);
+            this.panelBottomContainer.TabIndex = 0;
+            // 
+            // bottomButtonsPanel
+            // 
+            this.bottomButtonsPanel.ColumnCount = 4;
+            this.bottomButtonsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.bottomButtonsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.bottomButtonsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.bottomButtonsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.bottomButtonsPanel.Controls.Add(this.checkButton, 0, 0);
+            this.bottomButtonsPanel.Controls.Add(this.fixSelectedButton, 2, 0);
+            this.bottomButtonsPanel.Controls.Add(this.selectAllButton, 1, 0);
+            this.bottomButtonsPanel.Controls.Add(this.buttonExportFile, 3, 0);
+            this.bottomButtonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.bottomButtonsPanel.Location = new System.Drawing.Point(868, 0);
+            this.bottomButtonsPanel.Name = "bottomButtonsPanel";
+            this.bottomButtonsPanel.RowCount = 1;
+            this.bottomButtonsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.bottomButtonsPanel.Size = new System.Drawing.Size(900, 99);
+            this.bottomButtonsPanel.TabIndex = 1;
+            // 
+            // checkButton
+            // 
+            this.checkButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkButton.Location = new System.Drawing.Point(3, 3);
+            this.checkButton.Name = "checkButton";
+            this.checkButton.Size = new System.Drawing.Size(219, 93);
+            this.checkButton.TabIndex = 2;
+            this.checkButton.Text = "检测";
+            this.checkButton.UseVisualStyleBackColor = true;
             // 
             // fixSelectedButton
             // 
+            this.fixSelectedButton.AutoSize = true;
             this.fixSelectedButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fixSelectedButton.Location = new System.Drawing.Point(3, 3);
+            this.fixSelectedButton.Location = new System.Drawing.Point(453, 3);
             this.fixSelectedButton.Name = "fixSelectedButton";
-            this.fixSelectedButton.Size = new System.Drawing.Size(168, 68);
-            this.fixSelectedButton.TabIndex = 2;
-            this.fixSelectedButton.Text = "修复当前所选项";
+            this.fixSelectedButton.Size = new System.Drawing.Size(219, 93);
+            this.fixSelectedButton.TabIndex = 0;
+            this.fixSelectedButton.Text = "修复所选项";
             this.fixSelectedButton.UseVisualStyleBackColor = true;
             // 
-            // refreshButton
+            // selectAllButton
             // 
-            this.refreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.refreshButton.AutoSize = true;
-            this.refreshButton.Location = new System.Drawing.Point(351, 3);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(126, 68);
-            this.refreshButton.TabIndex = 0;
-            this.refreshButton.Text = "刷新检测结果";
-            this.refreshButton.UseVisualStyleBackColor = true;
+            this.selectAllButton.AutoSize = true;
+            this.selectAllButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectAllButton.Location = new System.Drawing.Point(228, 3);
+            this.selectAllButton.Name = "selectAllButton";
+            this.selectAllButton.Size = new System.Drawing.Size(219, 93);
+            this.selectAllButton.TabIndex = 1;
+            this.selectAllButton.Text = "全选";
+            this.selectAllButton.UseVisualStyleBackColor = true;
             // 
-            // reportExportButton
+            // bottomLeftTextPanel
             // 
-            this.reportExportButton.AutoSize = true;
-            this.reportExportButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportExportButton.Location = new System.Drawing.Point(177, 3);
-            this.reportExportButton.Name = "reportExportButton";
-            this.reportExportButton.Size = new System.Drawing.Size(168, 68);
-            this.reportExportButton.TabIndex = 1;
-            this.reportExportButton.Text = "导出报告";
-            this.reportExportButton.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 74);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.bottomLeftTextPanel.ColumnCount = 1;
+            this.bottomLeftTextPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.bottomLeftTextPanel.Controls.Add(this.label2, 0, 0);
+            this.bottomLeftTextPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.bottomLeftTextPanel.Location = new System.Drawing.Point(0, 0);
+            this.bottomLeftTextPanel.Name = "bottomLeftTextPanel";
+            this.bottomLeftTextPanel.RowCount = 1;
+            this.bottomLeftTextPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.bottomLeftTextPanel.Size = new System.Drawing.Size(496, 99);
+            this.bottomLeftTextPanel.TabIndex = 0;
             // 
             // label2
             // 
@@ -179,69 +319,53 @@
             this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(194, 74);
+            this.label2.Size = new System.Drawing.Size(490, 99);
             this.label2.TabIndex = 0;
             this.label2.Text = "合格率：100%";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tabPage2
+            // tabControlContainerPanel
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1015, 509);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "账户策略";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabControlContainerPanel.Controls.Add(this.tabControl1);
+            this.tabControlContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlContainerPanel.Location = new System.Drawing.Point(0, 57);
+            this.tabControlContainerPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControlContainerPanel.Name = "tabControlContainerPanel";
+            this.tabControlContainerPanel.Size = new System.Drawing.Size(1768, 573);
+            this.tabControlContainerPanel.TabIndex = 2;
             // 
-            // tabPage3
+            // buttonExportFile
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 28);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1015, 509);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "日志";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.buttonExportFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonExportFile.Location = new System.Drawing.Point(678, 3);
+            this.buttonExportFile.Name = "buttonExportFile";
+            this.buttonExportFile.Size = new System.Drawing.Size(219, 93);
+            this.buttonExportFile.TabIndex = 3;
+            this.buttonExportFile.Text = "导出报表";
+            this.buttonExportFile.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 28);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1015, 509);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "网络配置";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 28);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1015, 509);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "其他配置";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1023, 578);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(1768, 729);
+            this.Controls.Add(this.tabControlContainerPanel);
+            this.Controls.Add(this.panelBottomContainer);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateGridOverview)).EndInit();
+            this.panelBottomContainer.ResumeLayout(false);
+            this.bottomButtonsPanel.ResumeLayout(false);
+            this.bottomButtonsPanel.PerformLayout();
+            this.bottomLeftTextPanel.ResumeLayout(false);
+            this.bottomLeftTextPanel.PerformLayout();
+            this.tabControlContainerPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -253,16 +377,27 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button refreshButton;
-        private System.Windows.Forms.Button reportExportButton;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button fixSelectedButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button selectAllButton;
+        private System.Windows.Forms.Panel panelBottomContainer;
+        private System.Windows.Forms.Button checkButton;
+        private System.Windows.Forms.TableLayoutPanel bottomLeftTextPanel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel bottomButtonsPanel;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.DataGridView dateGridOverview;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRuleName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPath;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPropertyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpectedValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDetectedValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDetectResult;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnSelected;
+        private System.Windows.Forms.Panel tabControlContainerPanel;
+        private System.Windows.Forms.Button buttonExportFile;
     }
 }
 
