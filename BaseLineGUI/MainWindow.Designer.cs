@@ -33,14 +33,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dateGridOverview = new System.Windows.Forms.DataGridView();
-            this.ColumnRuleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnItemType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPropertyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnExpectedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDetectedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDetectResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -54,6 +46,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControlContainerPanel = new System.Windows.Forms.Panel();
             this.buttonExportFile = new System.Windows.Forms.Button();
+            this.ColumnRuleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPropertyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnExpectedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDetectedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDetectResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -116,6 +116,9 @@
             // 
             // dateGridOverview
             // 
+            this.dateGridOverview.AllowUserToAddRows = false;
+            this.dateGridOverview.AllowUserToDeleteRows = false;
+            this.dateGridOverview.AllowUserToResizeRows = false;
             this.dateGridOverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dateGridOverview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnRuleName,
@@ -127,75 +130,14 @@
             this.ColumnDetectResult,
             this.ColumnSelected});
             this.dateGridOverview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateGridOverview.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dateGridOverview.Location = new System.Drawing.Point(3, 3);
             this.dateGridOverview.Name = "dateGridOverview";
+            this.dateGridOverview.ReadOnly = true;
             this.dateGridOverview.RowHeadersWidth = 62;
             this.dateGridOverview.RowTemplate.Height = 30;
             this.dateGridOverview.Size = new System.Drawing.Size(1754, 535);
             this.dateGridOverview.TabIndex = 0;
-            // 
-            // ColumnRuleName
-            // 
-            this.ColumnRuleName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColumnRuleName.HeaderText = "规则名";
-            this.ColumnRuleName.MinimumWidth = 8;
-            this.ColumnRuleName.Name = "ColumnRuleName";
-            this.ColumnRuleName.Width = 91;
-            // 
-            // ColumnItemType
-            // 
-            this.ColumnItemType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColumnItemType.HeaderText = "规则类型";
-            this.ColumnItemType.MinimumWidth = 8;
-            this.ColumnItemType.Name = "ColumnItemType";
-            this.ColumnItemType.Width = 91;
-            // 
-            // ColumnPath
-            // 
-            this.ColumnPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ColumnPath.HeaderText = "注册表路径";
-            this.ColumnPath.MinimumWidth = 8;
-            this.ColumnPath.Name = "ColumnPath";
-            this.ColumnPath.Width = 108;
-            // 
-            // ColumnPropertyName
-            // 
-            this.ColumnPropertyName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnPropertyName.HeaderText = "注册表项/Auditpol子类别";
-            this.ColumnPropertyName.MinimumWidth = 8;
-            this.ColumnPropertyName.Name = "ColumnPropertyName";
-            // 
-            // ColumnExpectedValue
-            // 
-            this.ColumnExpectedValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColumnExpectedValue.HeaderText = "期望值";
-            this.ColumnExpectedValue.MinimumWidth = 8;
-            this.ColumnExpectedValue.Name = "ColumnExpectedValue";
-            this.ColumnExpectedValue.Width = 91;
-            // 
-            // ColumnDetectedValue
-            // 
-            this.ColumnDetectedValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColumnDetectedValue.HeaderText = "检测值";
-            this.ColumnDetectedValue.MinimumWidth = 8;
-            this.ColumnDetectedValue.Name = "ColumnDetectedValue";
-            this.ColumnDetectedValue.Width = 91;
-            // 
-            // ColumnDetectResult
-            // 
-            this.ColumnDetectResult.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColumnDetectResult.HeaderText = "检测结果";
-            this.ColumnDetectResult.MinimumWidth = 8;
-            this.ColumnDetectResult.Name = "ColumnDetectResult";
-            this.ColumnDetectResult.Width = 91;
-            // 
-            // ColumnSelected
-            // 
-            this.ColumnSelected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColumnSelected.HeaderText = "勾选";
-            this.ColumnSelected.MinimumWidth = 8;
-            this.ColumnSelected.Name = "ColumnSelected";
-            this.ColumnSelected.Width = 45;
             // 
             // tabPage2
             // 
@@ -344,6 +286,78 @@
             this.buttonExportFile.Text = "导出报表";
             this.buttonExportFile.UseVisualStyleBackColor = true;
             // 
+            // ColumnRuleName
+            // 
+            this.ColumnRuleName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColumnRuleName.HeaderText = "规则名";
+            this.ColumnRuleName.MinimumWidth = 8;
+            this.ColumnRuleName.Name = "ColumnRuleName";
+            this.ColumnRuleName.ReadOnly = true;
+            this.ColumnRuleName.Width = 91;
+            // 
+            // ColumnItemType
+            // 
+            this.ColumnItemType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColumnItemType.HeaderText = "规则类型";
+            this.ColumnItemType.MinimumWidth = 8;
+            this.ColumnItemType.Name = "ColumnItemType";
+            this.ColumnItemType.ReadOnly = true;
+            this.ColumnItemType.Width = 91;
+            // 
+            // ColumnPath
+            // 
+            this.ColumnPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColumnPath.HeaderText = "注册表路径";
+            this.ColumnPath.MinimumWidth = 8;
+            this.ColumnPath.Name = "ColumnPath";
+            this.ColumnPath.ReadOnly = true;
+            this.ColumnPath.Width = 108;
+            // 
+            // ColumnPropertyName
+            // 
+            this.ColumnPropertyName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColumnPropertyName.HeaderText = "注册表项/Auditpol子类别";
+            this.ColumnPropertyName.MinimumWidth = 8;
+            this.ColumnPropertyName.Name = "ColumnPropertyName";
+            this.ColumnPropertyName.ReadOnly = true;
+            this.ColumnPropertyName.Width = 1082;
+            // 
+            // ColumnExpectedValue
+            // 
+            this.ColumnExpectedValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColumnExpectedValue.HeaderText = "期望值";
+            this.ColumnExpectedValue.MinimumWidth = 8;
+            this.ColumnExpectedValue.Name = "ColumnExpectedValue";
+            this.ColumnExpectedValue.ReadOnly = true;
+            this.ColumnExpectedValue.Width = 91;
+            // 
+            // ColumnDetectedValue
+            // 
+            this.ColumnDetectedValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColumnDetectedValue.HeaderText = "检测值";
+            this.ColumnDetectedValue.MinimumWidth = 8;
+            this.ColumnDetectedValue.Name = "ColumnDetectedValue";
+            this.ColumnDetectedValue.ReadOnly = true;
+            this.ColumnDetectedValue.Width = 91;
+            // 
+            // ColumnDetectResult
+            // 
+            this.ColumnDetectResult.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColumnDetectResult.HeaderText = "检测结果";
+            this.ColumnDetectResult.MinimumWidth = 8;
+            this.ColumnDetectResult.Name = "ColumnDetectResult";
+            this.ColumnDetectResult.ReadOnly = true;
+            this.ColumnDetectResult.Width = 91;
+            // 
+            // ColumnSelected
+            // 
+            this.ColumnSelected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColumnSelected.HeaderText = "勾选";
+            this.ColumnSelected.MinimumWidth = 8;
+            this.ColumnSelected.Name = "ColumnSelected";
+            this.ColumnSelected.ReadOnly = true;
+            this.ColumnSelected.Width = 45;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -388,6 +402,8 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.DataGridView dateGridOverview;
+        private System.Windows.Forms.Panel tabControlContainerPanel;
+        private System.Windows.Forms.Button buttonExportFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRuleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPath;
@@ -396,8 +412,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDetectedValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDetectResult;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnSelected;
-        private System.Windows.Forms.Panel tabControlContainerPanel;
-        private System.Windows.Forms.Button buttonExportFile;
     }
 }
 
