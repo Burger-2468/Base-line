@@ -96,7 +96,7 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
 	//返回是否符合成功
 	if (rule.isTrueDetect && !rule.isCompliant) {
 		result.status = 1;//返回错误
-		strcpy(result.value = outputAudit(rule.currentString));//返回当前值字符串形式
+		strcpy(result.value , outputAudit(rule.currentString));//返回当前值字符串形式
 	}
 	else if (rule.isTrueDetect && rule.isCompliant) {
 		result.status = 0;//返回正确
