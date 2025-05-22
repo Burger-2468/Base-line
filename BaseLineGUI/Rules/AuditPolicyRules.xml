@@ -1,0 +1,7 @@
+<auditpolicy-rules>
+  <rule-item>
+    <item-name>检查是否开启策略更改审核</item-name>
+    <sub-category>{0CCE9210-69AE-11D9-BED3-505054503030}</sub-category>
+    <expected-value>3</expected-value>
+  </rule-item>
+</auditpolicy-rules>
