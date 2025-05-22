@@ -13,12 +13,12 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char
 	std::string wIName(registryPath);
 	rule.valueName = AnsiToWide(wIName);
 	//设置返回值类型
-	if (itemType == "DWORD") { 
+	if (strcmp(itemType,"DWORD")==0 ) { 
 		rule.valueType = ValueType::DWORD;
 		char *end;//转成数字
 		rule.standardDword = std::strtol(expectedValue,&end,10);
 	}
-	else if (itemType == "STRING"){
+	else if (strcmp(itemType,"STRING")==0 ){
 		rule.valueType = ValueType::STRING;
 		std::string expV(expectedValue);
 		rule.standardString = AnsiToWide(expV);
@@ -52,24 +52,27 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char
 	return result;
 }
 
-char* outputAudit(const int expectedValue) {
-	char* output = new char[100];
-	if (expectedValue == 0) {
+
+
+
+char* outputAudit(std::wstring expectedValue) {
+	char* output = new char[30];
+	if (expectedValue == L"0") {
 		return strcpy(output, "无审核");
 	}
-	else if (expectedValue == 1) {
-		
+	else if (expectedValue == L"1") {
+		return strcpy(output, "成功审核");
 	}
-	else if (expectedValue == 2) {
-	
+	else if (expectedValue == L"2") {
+		return strcpy(output, "失败审核");
 	}
-	else if (expectedValue == 3) {
-	
+	else if (expectedValue == L"3") {
+		return strcpy(output, "成功审核，失败审核");
 	}
-
+	else {
+		return strcpy(output, "检测失败");
+	}
 }
-
-
 
 extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
 	const char* auditCategory, const char* auditSubcategory,const int expectedValue) {
@@ -93,16 +96,11 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
 	//返回是否符合成功
 	if (rule.isTrueDetect && !rule.isCompliant) {
 		result.status = 1;//返回错误
-		if(expectedValue == 0)
-		/*std::string ansiStr = WideToAnsi(rule.currentString);
-		strcpy(result.value, ansiStr.c_str());*/
+		strcpy(result.value = outputAudit(rule.currentString));//返回当前值字符串形式
 	}
 	else if (rule.isTrueDetect && rule.isCompliant) {
 		result.status = 0;//返回正确
-		if(exp)
-		////返回当前值
-		//std::string ansiStr = WideToAnsi(rule.currentString);
-		//strcpy(result.value, ansiStr.c_str());
+		strcpy(result.value,outputAudit(rule.currentString));//返回当前值字符串形式
 	}
 	else {
 		result.status = 2;//检测失败

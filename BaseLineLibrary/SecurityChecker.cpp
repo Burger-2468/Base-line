@@ -399,7 +399,7 @@ CheckResult SecurityChecker::CheckOne(CheckResult rule) {
         if (SecurityPolicyHelper::GetAuditPolicy(WideToAnsi(rule.auditCategory), WideToAnsi(rule.auditSubcategory),
             auditSuccess, auditFailure)) {
             DWORD currentValue = (auditSuccess ? 1 : 0) + (auditFailure ? 2 : 0);
-            result.currentString = AnsiToWide(std::to_string(currentValue));
+            result.currentString = AnsiToWide(std::to_string(currentValue));//返回字符串类型的数字
             result.isCompliant = (currentValue == rule.standardDword);
         }
         else {
