@@ -75,5 +75,10 @@ namespace BaseLineGUI
                 row.Cells[7].Value = rule.IsSelectedToFix;
             }
         }
+
+        private void checkButton_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
