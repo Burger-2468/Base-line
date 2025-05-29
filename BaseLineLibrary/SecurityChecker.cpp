@@ -2,10 +2,10 @@
 #include <fstream>
 #include <regex>
 
-bool ParseRegPath(const std::wstring& fullPath, HKEY& rootKey, std::wstring& keyPath) {
+bool ParseRegPath(const std::wstring& fullPath /* fullPath是regPath，不含注册表项名 */, HKEY& rootKey, std::wstring& keyPath) {
     // 解析注册表路径
     size_t pos = fullPath.find_first_of(L"\\");
-    if (pos == std::wstring::npos) return false;
+    if (pos == std::wstring::npos) pos = fullPath.size() - 1;
 
     std::wstring rootStr = fullPath.substr(0, pos);
     keyPath = fullPath.substr(pos + 1);

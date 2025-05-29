@@ -21,7 +21,10 @@ namespace BaseLineGUI.RulesChecker
             string itemType = ruleItem.ValueType;
             string expectedValue = ruleItem.ExpectedValue;
             CheckResultStruct resultStruct = new CheckResultStruct();
-            DllFunctions.DllFunctions.CheckRegistryRule(registryPath, itemName, itemType, expectedValue, out resultStruct);
+            // 对注册表值类型进行预处理
+            itemType = itemType.Replace("REG_", ""); // 去掉前缀
+            itemType = itemType.Replace("SZ", "STRING"); // 将SZ转换为STRING
+            DllFunctions.DllFunctions.CheckRegistryRule("HKEY_LOCAL_MACHINE", "ServiceLastKnownStatus", "DWORD", "2", out resultStruct);
             // 获取检测结果  
             switch (resultStruct.status)
             {

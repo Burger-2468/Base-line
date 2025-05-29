@@ -11,7 +11,7 @@ CheckResult_CSharp CheckRegistryRuleInternal(const char* registryPath, const cha
 	std::string wpath(registryPath);
 	rule.regPath = AnsiToWide(wpath);
 	//设置注册表名称
-	std::string wIName(registryPath);
+	std::string wIName(itemName);
 	rule.valueName = AnsiToWide(wIName);
 	//设置返回值类型
 	if (strcmp(itemType,"DWORD")==0 ) { 
