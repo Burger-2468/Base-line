@@ -9,7 +9,7 @@ struct CheckResult_CSharp {
 	// 0: 正确，1: 错误，2: 检测失败
 	int status;
 	// 检测到的值
-	char value[1024];
+	char value[256];
 };
 
 extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char* registryPath, const char* itemName, const char* itemType, const char* expectedValue);

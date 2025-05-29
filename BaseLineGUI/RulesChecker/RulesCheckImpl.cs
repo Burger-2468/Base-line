@@ -3,6 +3,7 @@ using BaseLineGUI.StateStorage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace BaseLineGUI.RulesChecker
@@ -19,9 +20,9 @@ namespace BaseLineGUI.RulesChecker
             string itemName = ruleItem.ItemName;
             string itemType = ruleItem.ValueType;
             string expectedValue = ruleItem.ExpectedValue;
-            CheckResultStruct resultStruct = DllFunctions.DllFunctions.CheckRegistryRuleInternal(registryPath, itemName, itemType, expectedValue);
-            // 获取检测结果
-            switch(resultStruct.status)
+            CheckResultStruct resultStruct = DllFunctions.DllFunctions.CheckRegistryRule(registryPath, itemName, itemType, expectedValue);
+            // 获取检测结果  
+            switch (resultStruct.status)
             {
                 case 0: ruleItem.CheckResult = CheckResult.Passed; break;
                 case 1: ruleItem.CheckResult = CheckResult.NotPassed; break;
