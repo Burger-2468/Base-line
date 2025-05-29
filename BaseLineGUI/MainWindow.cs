@@ -2,6 +2,7 @@
 using BaseLineGUI.RulesLoader;
 using BaseLineGUI.StateStorage;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace BaseLineGUI
@@ -17,7 +18,7 @@ namespace BaseLineGUI
         private void MainWindow_Load(object sender, System.EventArgs e)
         {
             // 将规则列表中的规则项添加到DataGridView中
-            fillTable();
+            refreshTable();
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace BaseLineGUI
                     MessageBox.Show("未知规则类型。");
                 }
             }
-            fillTable();//刷新表格
+            refreshTable();//刷新表格
 
         }
 
@@ -77,7 +78,7 @@ namespace BaseLineGUI
         /// <summary>
         /// 刷新表格，将数据重新填充到DataGridView中
         /// </summary>
-        private void fillTable()
+        private void refreshTable()
         {
             this.dataGridOverview.Rows.Clear();
             List<RuleItem> rules = RulesStorage.GetRules();
@@ -94,7 +95,7 @@ namespace BaseLineGUI
                         rule1.ExpectedValue,
                         rule1.DetectedValue,
                         CheckResultClass.GetCheckResultName(rule.CheckResult),
-                        false
+                        rule.IsSelectedToFix
                     );
                 }
                 else if (rule is AuditPolicyRule rule2)
@@ -107,7 +108,7 @@ namespace BaseLineGUI
                         rule2.ExpectedValueString,
                         rule2.DetectedValueString,
                         CheckResultClass.GetCheckResultName(rule.CheckResult),
-                        true
+                        rule.IsSelectedToFix
                     );
                 }
                 else
@@ -121,6 +122,22 @@ namespace BaseLineGUI
             this.dataGridOverview.AutoResizeColumn(4);
             this.dataGridOverview.AutoResizeColumn(5);
             this.dataGridOverview.AutoResizeColumn(6);
+        }
+
+        /// <summary>
+        /// 全选按钮的点击事件处理函数
+        /// </summary>
+        private void selectAllButton_Click(object sender, System.EventArgs e)
+        {
+            List<RuleItem> rules = RulesStorage.GetRules();
+            foreach (RuleItem rule in rules)
+            {
+                if(rule.CheckResult == CheckResult.NotPassed)
+                {
+                    rule.IsSelectedToFix = true;
+                }
+            }
+            refreshTable(); // 刷新表格显示
         }
     }
 }
