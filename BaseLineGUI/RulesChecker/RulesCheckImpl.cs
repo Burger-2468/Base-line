@@ -39,8 +39,8 @@ namespace BaseLineGUI.RulesChecker
             string subCategory = ruleItem.SubCategory;
             int expectedValue = ruleItem.ExpectedValue;
             CheckResultStruct resultStruct;
-            //DllFunctions.DllFunctions.CheckAuditpolRule(subCategory, expectedValue, out resultStruct);
-            DllFunctions.DllFunctions.CheckAuditpolRule("{0CCE9210-69AE-11D9-BED3-505054503030}", 0, out resultStruct);
+            DllFunctions.DllFunctions.CheckAuditpolRule(subCategory, expectedValue, out resultStruct);
+            //DllFunctions.DllFunctions.CheckAuditpolRule("{0CCE9210-69AE-11D9-BED3-505054503030}", 0, out resultStruct);
             // 获取检测结果  
             switch (resultStruct.status)
             {

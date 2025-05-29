@@ -63,24 +63,10 @@ extern "C" __declspec(dllexport) void CheckRegistryRule(const char* registryPath
 
 
 
-char* outputAudit(std::wstring expectedValue) {
-	char* output = new char[30];
-	if (expectedValue == L"0") {
-		return strcpy(output, "无审核");
-	}
-	else if (expectedValue == L"1") {
-		return strcpy(output, "成功审核");
-	}
-	else if (expectedValue == L"2") {
-		return strcpy(output, "失败审核");
-	}
-	else if (expectedValue == L"3") {
-		return strcpy(output, "成功审核，失败审核");
-	}
-	else {
-		return strcpy(output, "检测失败");
-	}
-}
+//char* outputAudit(std::wstring expectedValue) {
+//	char* output = new char[30];
+//	atoi(WideToAnsi(expectedValue))
+//}
 
 CheckResult_CSharp CheckAuditpolRuleInternal(
 	const char* auditSubcategory,const int expectedValue) {
@@ -105,11 +91,11 @@ CheckResult_CSharp CheckAuditpolRuleInternal(
 	//返回是否符合成功
 	if (rule.isTrueDetect && !rule.isCompliant) {
 		result.status = 1;//返回错误
-		strcpy(result.value , outputAudit(rule.currentString));//返回当前值字符串形式
+		strcpy(result.value , WideToAnsi(rule.currentString).c_str());//返回当前值字符串形式
 	}
 	else if (rule.isTrueDetect && rule.isCompliant) {
 		result.status = 0;//返回正确
-		strcpy(result.value,outputAudit(rule.currentString));//返回当前值字符串形式
+		strcpy(result.value, WideToAnsi(rule.currentString).c_str());//返回当前值字符串形式
 	}
 	else {
 		result.status = 2;//检测失败
