@@ -1,10 +1,8 @@
-﻿using BaseLineGUI.RulesLoader;
+﻿using BaseLineGUI.RulesChecker;
+using BaseLineGUI.RulesLoader;
 using BaseLineGUI.StateStorage;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using BaseLineGUI.DllFunctions;
-using BaseLineGUI.RulesChecker;
 
 namespace BaseLineGUI
 {
@@ -67,7 +65,7 @@ namespace BaseLineGUI
         /// </summary>
         private void dataGridOverview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 7)
+            if (e.ColumnIndex == 7)
             {
                 // 获取当前行
                 DataGridViewRow row = this.dataGridOverview.Rows[e.RowIndex];
@@ -84,24 +82,22 @@ namespace BaseLineGUI
         {
             List<RuleItem> rules = RulesStorage.GetRules();//创建检测项容器
 
-            for(int i = 0; i < rules.Count; i++)//遍历容器执行查询
+            for (int i = 0; i < rules.Count; i++)//遍历容器执行查询
             {
                 RuleItem rule = rules[i];
 
-                try
-                {
-                    if(rule is RegistryRule registryRule)
-                    {
-                        //CheckResultStruct result = BaseLineGUI.DllFunctions.DllFunctions.CheckRegistryRule(
-                        //    registryRule.RegistryPath,
-                        //    registryRule.RegistryName,
-                        //    registryRule.ValueType,
-                        //    registryRule.ExpectedValue);
-                        RulesCheckImpl.CheckRegistryRule(rule);
 
-                        //registryRule.DetectedValue = result.value;
-                        //registryRule.CheckResult = (CheckResultStatus)result.status;
-                    }
+                if (rule is RegistryRule registryRule)
+                {
+                    //CheckResultStruct result = BaseLineGUI.DllFunctions.DllFunctions.CheckRegistryRule(
+                    //    registryRule.RegistryPath,
+                    //    registryRule.RegistryName,
+                    //    registryRule.ValueType,
+                    //    registryRule.ExpectedValue);
+                    RulesCheckImpl.CheckRegistryRule(registryRule);
+
+                    //registryRule.DetectedValue = result.value;
+                    //registryRule.CheckResult = (CheckResultStatus)result.status;
                 }
             }
 
