@@ -1,30 +1,35 @@
-﻿using System;
+﻿using BaseLineGUI.StateStorage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace BaseLineGUI.RulesChecker
 {
-    internal class RulesCheckImpl
+    public class RulesCheckImpl
     {
-        protected static CheckResult CheckRegistryRule(string registryPath, string itemName, string itemType, string expectedValue)
+        public static RuleItem CheckRegistryRule(RuleItem ruleItem)
         {
-            CheckResult result = new CheckResult();
+            //  
+            string registryPath = ruleItem.RegistryPath;
+            string itemName = ruleItem.ItemName;
+            string itemType = ruleItem.ItemType;
+            string expectedValue = ruleItem.ExpectedValue;
+            return ruleItem;
+        }
+
+        public static CheckResultStruct CheckAuditpolRule(string auditSubCategory, int expectedValue)
+        {
+            CheckResultStruct result = new CheckResultStruct();
             return result;
         }
 
-        protected static CheckResult CheckAuditpolRule(string auditSubCategory, int expectedValue)
-        {
-            CheckResult result = new CheckResult();
-            return result;
-        }
-
-        protected static bool FixRegistryRule(string registryPath, string itemName, string itemType, string expectedValue)
+        public static bool FixRegistryRule(string registryPath, string itemName, string itemType, string expectedValue)
         {
             return false;
         }
 
-        protected static bool FixAuditpolRule(string auditSubCategory, int expectedValue)
+        public static bool FixAuditpolRule(string auditSubCategory, int expectedValue)
         {
             return false;
         }

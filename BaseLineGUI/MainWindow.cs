@@ -1,10 +1,14 @@
 ﻿using BaseLineGUI.RulesLoader;
 using BaseLineGUI.StateStorage;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using BaseLineGUI.DllFunctions;
+using BaseLineGUI.RulesChecker;
 
 namespace BaseLineGUI
 {
+
     public partial class MainWindow : Form
     {
         public MainWindow()
@@ -78,6 +82,29 @@ namespace BaseLineGUI
 
         private void checkButton_Click(object sender, System.EventArgs e)
         {
+            List<RuleItem> rules = RulesStorage.GetRules();//创建检测项容器
+
+            for(int i = 0; i < rules.Count; i++)//遍历容器执行查询
+            {
+                RuleItem rule = rules[i];
+
+                try
+                {
+                    if(rule is RegistryRule registryRule)
+                    {
+                        //CheckResultStruct result = BaseLineGUI.DllFunctions.DllFunctions.CheckRegistryRule(
+                        //    registryRule.RegistryPath,
+                        //    registryRule.RegistryName,
+                        //    registryRule.ValueType,
+                        //    registryRule.ExpectedValue);
+                        RulesCheckImpl.CheckRegistryRule(rule);
+
+                        //registryRule.DetectedValue = result.value;
+                        //registryRule.CheckResult = (CheckResultStatus)result.status;
+                    }
+                }
+            }
+
 
         }
 

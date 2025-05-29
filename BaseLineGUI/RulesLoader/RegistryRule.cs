@@ -5,7 +5,7 @@ namespace BaseLineGUI.RulesLoader
     /// <summary>
     /// 注册表规则项
     /// </summary>
-    public class RegistryRule : RuleItem
+    public class RegistryRule : RuleItem//意思是继承RuleItem
     {
         private readonly string registryPath;
         private readonly string registryName;
