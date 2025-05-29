@@ -152,6 +152,9 @@
     <ClCompile Include="SecurityChecker.cpp" />
     <ClCompile Include="SecurityPolicyHelper.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\BaseLineGUI\Rules\原规则.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

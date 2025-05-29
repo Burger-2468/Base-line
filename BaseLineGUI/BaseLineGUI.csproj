@@ -71,7 +71,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RulesChecker\CheckResult.cs" />
+    <Compile Include="RulesChecker\CheckResultStruct.cs" />
     <Compile Include="RulesChecker\RulesCheckImpl.cs" />
     <Compile Include="RulesLoader\AuditPolicyRule.cs" />
     <Compile Include="RulesLoader\RegistryRule.cs" />
