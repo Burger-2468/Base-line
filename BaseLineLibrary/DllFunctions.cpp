@@ -1,7 +1,7 @@
 #include "DllFunctions.h"
 #pragma warning( disable : 4996)
 
-extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char* registryPath, const char* itemName,
+CheckResult_CSharp CheckRegistryRuleInternal(const char* registryPath, const char* itemName,
 	const char* itemType, const char* expectedValue) {
 	CheckResult_CSharp result;
 	CheckResult rule;
@@ -53,6 +53,13 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char
 	return result;
 }
 
+extern "C" __declspec(dllexport) void CheckRegistryRule(const char* registryPath, const char* itemName,
+	const char* itemType, const char* expectedValue, CheckResult_CSharp* result) {
+	CheckResult_CSharp result_csharp = CheckRegistryRuleInternal(registryPath, itemName, itemType, expectedValue);
+	// 将结果复制到传入的结构体中
+	result->status = result_csharp.status;
+	strcpy(result->value, result_csharp.value);
+}
 
 
 

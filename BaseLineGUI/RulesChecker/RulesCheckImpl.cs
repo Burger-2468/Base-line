@@ -20,7 +20,8 @@ namespace BaseLineGUI.RulesChecker
             string itemName = ruleItem.ItemName;
             string itemType = ruleItem.ValueType;
             string expectedValue = ruleItem.ExpectedValue;
-            CheckResultStruct resultStruct = DllFunctions.DllFunctions.CheckRegistryRule(registryPath, itemName, itemType, expectedValue);
+            CheckResultStruct resultStruct = new CheckResultStruct();
+            DllFunctions.DllFunctions.CheckRegistryRule(registryPath, itemName, itemType, expectedValue, out resultStruct);
             // 获取检测结果  
             switch (resultStruct.status)
             {

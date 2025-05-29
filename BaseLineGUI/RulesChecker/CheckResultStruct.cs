@@ -15,7 +15,7 @@ namespace BaseLineGUI.RulesChecker
         // 检测结果
         public int status; // 0: 正确，1: 错误，2: 检测失败
         // 检测到的值
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1024)]
         public string value;
     }
 }

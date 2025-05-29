@@ -11,7 +11,7 @@ namespace BaseLineGUI.DllFunctions
     {
 
         [DllImport("BaseLineLibrary.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern CheckResultStruct CheckRegistryRule(string registryPath, string itemName, string itemType, string expectedValue);
+        public static extern void CheckRegistryRule(string registryPath, string itemName, string itemType, string expectedValue, out CheckResultStruct result);
 
         [DllImport("BaseLineLibrary.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern CheckResultStruct CheckAuditpolRule(string auditCategory, string auditSubcategory, int expectedValue);
