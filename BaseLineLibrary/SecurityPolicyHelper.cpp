@@ -58,19 +58,19 @@ bool SecurityPolicyHelper::ExecuteAuditpolCommand(const std::string& command, st
     return true;
 }
 
-bool SecurityPolicyHelper::GetAuditPolicy(const std::string& auditCategory,
+bool SecurityPolicyHelper::GetAuditPolicy(
     const std::string& auditSubcategory,
     bool& auditSuccess, bool& auditFailure) {
-    std::string command = "/get /category:" + auditCategory + " /subcategory:" + auditSubcategory ;
+    std::string command = "/get /subcategory:" + auditSubcategory ;
     std::string output;
 
     if (!ExecuteAuditpolCommand(command, output)) {
         return false;
     }
-
+    /*
     // 使用正则表达式解析输出
-    std::regex successRegex("Success:\\s+(\\w+)");  // TODO: 修改英文显示！ 修改英文显示！！ 修改英文显示！！
-    std::regex failureRegex("Failure:\\s+(\\w+)");
+    std::regex successRegex("Success:\\s+(\\S+)");  // TODO: 修改英文显示！ 修改英文显示！！ 修改英文显示！！
+    std::regex failureRegex("Failure:\\s+(\\S+)");
 
     std::smatch successMatch, failureMatch;
 
@@ -86,6 +86,22 @@ bool SecurityPolicyHelper::GetAuditPolicy(const std::string& auditCategory,
 
     if (std::regex_search(output, failureMatch, failureRegex) && failureMatch.size() > 1) {
         auditFailure = (failureMatch[1] == "Enable");
+    }*/
+    if(output.find("成功和失败") != std::string::npos) {
+        auditSuccess = true;
+        auditFailure = true;
+    } else if(output.find("成功") != std::string::npos) {
+        auditSuccess = true;
+        auditFailure = false;
+    } else if(output.find("失败") != std::string::npos) {
+        auditSuccess = false;
+        auditFailure = true;
+    } else if(output.find("无审核") != std::string::npos) {
+        auditSuccess = false;
+        auditFailure = false;
+    }
+    else {
+		return false; // 如果输出格式不符合预期，返回 false
     }
 
     return true;

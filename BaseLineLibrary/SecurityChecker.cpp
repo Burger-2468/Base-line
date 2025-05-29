@@ -75,7 +75,7 @@ CheckResult SecurityChecker::CheckOne(CheckResult rule) {
         bool auditSuccess = false;//成功事件1:0
         bool auditFailure = false;//失败事件2:0
 
-        if (SecurityPolicyHelper::GetAuditPolicy(WideToAnsi(rule.auditCategory), WideToAnsi(rule.auditSubcategory),
+        if (SecurityPolicyHelper::GetAuditPolicy(WideToAnsi(rule.auditSubcategory),
             auditSuccess, auditFailure)) {
             DWORD currentValue = (auditSuccess ? 1 : 0) + (auditFailure ? 2 : 0);
             result.currentString = AnsiToWide(std::to_string(currentValue));//返回字符串类型的数字

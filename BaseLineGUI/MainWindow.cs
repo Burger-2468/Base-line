@@ -99,9 +99,18 @@ namespace BaseLineGUI
                     //registryRule.DetectedValue = result.value;
                     //registryRule.CheckResult = (CheckResultStatus)result.status;
                 }
+                else if (rule is AuditPolicyRule auditPolicyRule)
+                {
+
+                    RulesCheckImpl.CheckAuditpolRule(auditPolicyRule);
+
+                }
+                else
+                {
+                    MessageBox.Show("未知规则类型。");
+                }
+
             }
-
-
         }
 
         private void fixSelectedButton_Click(object sender, System.EventArgs e)

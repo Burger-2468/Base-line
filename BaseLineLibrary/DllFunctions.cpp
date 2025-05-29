@@ -82,16 +82,16 @@ char* outputAudit(std::wstring expectedValue) {
 	}
 }
 
-extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
-	const char* auditCategory, const char* auditSubcategory,const int expectedValue) {
+CheckResult_CSharp CheckAuditpolRuleInternal(
+	const char* auditSubcategory,const int expectedValue) {
 	CheckResult_CSharp result;
 
 	CheckResult rule;
 	//设置为审核策略类型
 	rule.checkType = CheckType::AuditPolicy;
 	//设置审核策略类别
-	std::string Adp(auditCategory);
-	rule.auditCategory = AnsiToWide(Adp);
+	//std::string Adp(auditCategory);
+	//rule.auditCategory = AnsiToWide(Adp);
 	//设置审核策略子类别
 	std::string Asup(auditSubcategory);
 	rule.auditSubcategory = AnsiToWide(Asup);
@@ -116,6 +116,14 @@ extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
 		strcpy(result.value, "检测失败");
 	}
 	return result;
+}
+
+extern "C" __declspec(dllexport) void CheckAuditpolRule(
+	const char* auditSubcategory, const int expectedValue, CheckResult_CSharp* result) {
+	CheckResult_CSharp result_csharp = CheckAuditpolRuleInternal(auditSubcategory, expectedValue);
+	// 将结果复制到传入的结构体中
+	result->status = result_csharp.status;
+	strcpy(result->value, result_csharp.value);
 }
 
 extern "C" __declspec(dllexport) CheckResult_CSharp FixRegistryRule(const char* registryPath, const char* itemName, const char* itemType, const char* expectedValue) {
