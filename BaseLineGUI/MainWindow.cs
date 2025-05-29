@@ -80,5 +80,15 @@ namespace BaseLineGUI
         {
 
         }
+
+        private void fixSelectedButton_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void buttonExportFile_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

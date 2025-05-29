@@ -1,4 +1,5 @@
 #include "DllFunctions.h"
+#pragma warning( disable : 4996)
 
 extern "C" __declspec(dllexport) CheckResult_CSharp CheckRegistryRule(const char* registryPath, const char* itemName,
 	const char* itemType, const char* expectedValue) {
@@ -77,6 +78,7 @@ char* outputAudit(std::wstring expectedValue) {
 extern "C" __declspec(dllexport) CheckResult_CSharp CheckAuditpolRule(
 	const char* auditCategory, const char* auditSubcategory,const int expectedValue) {
 	CheckResult_CSharp result;
+
 	CheckResult rule;
 	//设置为审核策略类型
 	rule.checkType = CheckType::AuditPolicy;

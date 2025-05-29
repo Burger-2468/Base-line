@@ -30,9 +30,9 @@ struct CheckResult {
 
 class SecurityChecker {
 public:
-    SecurityChecker();// 构造函数
-    std::vector<CheckResult> CheckAll();// 检查所有项并返回结果
-    bool RepairAll(std::vector<CheckResult>& results);// 修复所有项并返回结果
+    //SecurityChecker();// 构造函数
+    //std::vector<CheckResult> CheckAll();// 检查所有项并返回结果
+    //bool RepairAll(std::vector<CheckResult>& results);// 修复所有项并返回结果
 
     static CheckResult CheckOne(CheckResult rule); // 检查单个项并返回结果
     static CheckResult RepairOne(CheckResult& result);// 修复单个项并返回结果

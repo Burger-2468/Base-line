@@ -71,7 +71,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -100,7 +100,7 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1047, 405);
@@ -110,9 +110,9 @@
             // 
             this.tabPage1.Controls.Add(this.dataGridOverview);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(1039, 379);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "全部";
@@ -136,7 +136,7 @@
             this.dataGridOverview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridOverview.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridOverview.Location = new System.Drawing.Point(2, 2);
-            this.dataGridOverview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridOverview.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridOverview.Name = "dataGridOverview";
             this.dataGridOverview.ReadOnly = true;
             this.dataGridOverview.RowHeadersWidth = 62;
@@ -220,10 +220,10 @@
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1171, 356);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(1039, 379);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "账户策略";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -231,10 +231,10 @@
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage3.Size = new System.Drawing.Size(1171, 356);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage3.Size = new System.Drawing.Size(1039, 379);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "日志";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -242,10 +242,10 @@
             // tabPage4
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage4.Size = new System.Drawing.Size(1171, 356);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage4.Size = new System.Drawing.Size(1039, 379);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "网络配置";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -253,10 +253,10 @@
             // tabPage5
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage5.Size = new System.Drawing.Size(1171, 356);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage5.Size = new System.Drawing.Size(1039, 379);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "其他配置";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -267,7 +267,7 @@
             this.panelBottomContainer.Controls.Add(this.bottomLeftTextPanel);
             this.panelBottomContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottomContainer.Location = new System.Drawing.Point(0, 443);
-            this.panelBottomContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelBottomContainer.Margin = new System.Windows.Forms.Padding(2);
             this.panelBottomContainer.Name = "panelBottomContainer";
             this.panelBottomContainer.Size = new System.Drawing.Size(1047, 66);
             this.panelBottomContainer.TabIndex = 0;
@@ -285,7 +285,7 @@
             this.bottomButtonsPanel.Controls.Add(this.buttonExportFile, 3, 0);
             this.bottomButtonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.bottomButtonsPanel.Location = new System.Drawing.Point(447, 0);
-            this.bottomButtonsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bottomButtonsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.bottomButtonsPanel.Name = "bottomButtonsPanel";
             this.bottomButtonsPanel.RowCount = 1;
             this.bottomButtonsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -296,7 +296,7 @@
             // 
             this.checkButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkButton.Location = new System.Drawing.Point(2, 2);
-            this.checkButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkButton.Margin = new System.Windows.Forms.Padding(2);
             this.checkButton.Name = "checkButton";
             this.checkButton.Size = new System.Drawing.Size(146, 62);
             this.checkButton.TabIndex = 2;
@@ -309,19 +309,20 @@
             this.fixSelectedButton.AutoSize = true;
             this.fixSelectedButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fixSelectedButton.Location = new System.Drawing.Point(302, 2);
-            this.fixSelectedButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fixSelectedButton.Margin = new System.Windows.Forms.Padding(2);
             this.fixSelectedButton.Name = "fixSelectedButton";
             this.fixSelectedButton.Size = new System.Drawing.Size(146, 62);
             this.fixSelectedButton.TabIndex = 0;
             this.fixSelectedButton.Text = "修复所选项";
             this.fixSelectedButton.UseVisualStyleBackColor = true;
+            this.fixSelectedButton.Click += new System.EventHandler(this.fixSelectedButton_Click);
             // 
             // selectAllButton
             // 
             this.selectAllButton.AutoSize = true;
             this.selectAllButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectAllButton.Location = new System.Drawing.Point(152, 2);
-            this.selectAllButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectAllButton.Margin = new System.Windows.Forms.Padding(2);
             this.selectAllButton.Name = "selectAllButton";
             this.selectAllButton.Size = new System.Drawing.Size(146, 62);
             this.selectAllButton.TabIndex = 1;
@@ -332,12 +333,13 @@
             // 
             this.buttonExportFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonExportFile.Location = new System.Drawing.Point(452, 2);
-            this.buttonExportFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonExportFile.Margin = new System.Windows.Forms.Padding(2);
             this.buttonExportFile.Name = "buttonExportFile";
             this.buttonExportFile.Size = new System.Drawing.Size(146, 62);
             this.buttonExportFile.TabIndex = 3;
             this.buttonExportFile.Text = "导出报表";
             this.buttonExportFile.UseVisualStyleBackColor = true;
+            this.buttonExportFile.Click += new System.EventHandler(this.buttonExportFile_Click);
             // 
             // bottomLeftTextPanel
             // 
@@ -346,7 +348,7 @@
             this.bottomLeftTextPanel.Controls.Add(this.label2, 0, 0);
             this.bottomLeftTextPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.bottomLeftTextPanel.Location = new System.Drawing.Point(0, 0);
-            this.bottomLeftTextPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bottomLeftTextPanel.Margin = new System.Windows.Forms.Padding(2);
             this.bottomLeftTextPanel.Name = "bottomLeftTextPanel";
             this.bottomLeftTextPanel.RowCount = 1;
             this.bottomLeftTextPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -384,7 +386,7 @@
             this.Controls.Add(this.tabControlContainerPanel);
             this.Controls.Add(this.panelBottomContainer);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainWindow";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainWindow_Load);
