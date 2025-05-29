@@ -112,7 +112,7 @@ extern "C" __declspec(dllexport) void CheckAuditpolRule(
 	strcpy(result->value, result_csharp.value);
 }
 
-extern "C" __declspec(dllexport) CheckResult_CSharp FixRegistryRule(const char* registryPath, const char* itemName, const char* itemType, const char* expectedValue) {
+CheckResult_CSharp FixRegistryRuleInternal(const char* registryPath, const char* itemName, const char* itemType, const char* expectedValue) {
 	CheckResult_CSharp result;
 	result.status = 2; // 初始化为检测失败
 	strncpy_s(result.value, sizeof(result.value), "初始化失败", _TRUNCATE);
@@ -167,7 +167,14 @@ extern "C" __declspec(dllexport) CheckResult_CSharp FixRegistryRule(const char* 
 	return result;
 }
 
-extern "C" __declspec(dllexport) CheckResult_CSharp FixAuditpolRule(const char* auditCategory, const char* auditSubcategory, const int expectedValue) {
+extern "C" __declspec(dllexport) void FixRegistryRule(const char* registryPath, const char* itemName, const char* itemType, const char* expectedValue, CheckResult_CSharp* result) {
+	CheckResult_CSharp result_csharp = FixRegistryRuleInternal(registryPath, itemName, itemType, expectedValue);
+	// 将结果复制到传入的结构体中
+	result->status = result_csharp.status;
+	strcpy(result->value, result_csharp.value);
+}
+
+CheckResult_CSharp FixAuditpolRuleInternal(const char* auditSubcategory, const int expectedValue) {
 	CheckResult_CSharp result;
 	result.status = 2;
 	strncpy_s(result.value, sizeof(result.value), "初始化失败", _TRUNCATE);
@@ -177,8 +184,6 @@ extern "C" __declspec(dllexport) CheckResult_CSharp FixAuditpolRule(const char* 
 	rule.checkType = CheckType::AuditPolicy;
 
 	// 转换并设置审核策略类别和子类别
-	std::string cat(auditCategory);
-	rule.auditCategory = AnsiToWide(cat);
 
 	std::string subcat(auditSubcategory);
 	rule.auditSubcategory = AnsiToWide(subcat);
@@ -208,4 +213,11 @@ extern "C" __declspec(dllexport) CheckResult_CSharp FixAuditpolRule(const char* 
 	strncpy_s(result.value, sizeof(result.value), ansiCurrent.c_str(), _TRUNCATE);
 
 	return result;
+}
+
+extern "C" __declspec(dllexport) void FixAuditpolRule(const char* auditSubcategory, const int expectedValue, CheckResult_CSharp* result) {
+	CheckResult_CSharp result_csharp = FixAuditpolRuleInternal(auditSubcategory, expectedValue);
+	// 将结果复制到传入的结构体中
+	result->status = result_csharp.status;
+	strcpy(result->value, result_csharp.value);
 }

@@ -130,8 +130,7 @@ CheckResult SecurityChecker::RepairOne(CheckResult& result) {
         bool auditSuccess = (result.standardDword & 1) != 0;
         bool auditFailure = (result.standardDword & 2) != 0;
         // 调用安全策略助手设置审核策略
-        repairActionSuccess = SecurityPolicyHelper::SetAuditPolicy(
-            WideToAnsi(result.auditCategory), WideToAnsi(result.auditSubcategory), auditSuccess, auditFailure);
+        repairActionSuccess = SecurityPolicyHelper::SetAuditPolicy(WideToAnsi(result.auditSubcategory), auditSuccess, auditFailure);
         result.repairSuccess = repairActionSuccess;
     }
 

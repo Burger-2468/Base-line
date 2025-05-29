@@ -16,11 +16,11 @@ namespace BaseLineGUI.DllFunctions
         [DllImport("BaseLineLibrary.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void CheckAuditpolRule(string auditSubcategory, int expectedValue, out CheckResultStruct result);
 
-        [DllImport("BaseLineLibrary.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern CheckResultStruct FixRegistryRule(string registryPath, string itemName, string itemType, string expectedValue);
+        [DllImport("BaseLineLibrary.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void FixRegistryRule(string registryPath, string itemName, string itemType, string expectedValue, out CheckResultStruct result);
 
         [DllImport("BaseLineLibrary.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern CheckResultStruct FixAuditpolRule(string auditCategory, string auditSubcategory, int expectedValue);
+        public static extern void FixAuditpolRule(string auditSubcategory, int expectedValue, out CheckResultStruct result);
 
         ///
         /// 调用方式

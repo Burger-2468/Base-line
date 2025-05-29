@@ -15,7 +15,7 @@ RegistryHelper::~RegistryHelper() {
 bool RegistryHelper::CreateKeyPath(HKEY root, const std::wstring& keyPath) {
     if (keyPath.empty()) return true;
 
-    size_t pos = keyPath.find_first_of(L"\\");
+    size_t pos = keyPath.find(L'\\');
     std::wstring currentKey = (pos != std::wstring::npos) ? keyPath.substr(0, pos) : keyPath;
     std::wstring remainingPath = (pos != std::wstring::npos) ? keyPath.substr(pos + 1) : L"";
 
@@ -106,14 +106,15 @@ bool RegistryHelper::WriteString(const std::string& value, bool createIfMissing)
     if (!m_hKey) return false;
 
     // 转换为宽字符
-    int sizeNeeded = MultiByteToWideChar(CP_ACP, 0, value.c_str(), -1, nullptr, 0);
+    int sizeNeeded = MultiByteToWideChar(CP_UTF8, 0, value.c_str(), -1, nullptr, 0);
     if (sizeNeeded <= 0) return false;
 
     std::vector<wchar_t> wideStr(sizeNeeded);
-    MultiByteToWideChar(CP_ACP, 0, value.c_str(), -1, wideStr.data(), sizeNeeded);
+    MultiByteToWideChar(CP_UTF8, 0, value.c_str(), -1, wideStr.data(), sizeNeeded);
 
-    return RegSetValueExW(m_hKey, m_valueName.c_str(), 0, REG_SZ,
-        reinterpret_cast<const BYTE*>(wideStr.data()), sizeNeeded * sizeof(wchar_t)) == ERROR_SUCCESS;
+    int status = RegSetValueExW(m_hKey, m_valueName.c_str(), 0, REG_SZ,
+        reinterpret_cast<const BYTE*>(wideStr.data()), sizeNeeded * sizeof(wchar_t));
+	return status == ERROR_SUCCESS;
     //m_hKey是HKEY类型，RegSetValueExA和RegSetValueExW都是这个类型的参数，所以可以直接用
     //m_valueName.c_str()是const char*类型，所以可以直接用
 

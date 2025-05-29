@@ -31,7 +31,7 @@ namespace BaseLineGUI
                 // 获取当前行
                 DataGridViewRow row = this.dataGridOverview.Rows[e.RowIndex];
                 // 获取当前行的规则项
-                RuleItem rule = RulesStorage.GetRules()[e.RowIndex];
+                RuleItem rule = RulesStorage.GetRules()[(int)row.Cells[0].Value];
                 // 改变选中状态
                 rule.IsSelectedToFix = !rule.IsSelectedToFix;
                 // 更新选中状态
@@ -67,12 +67,36 @@ namespace BaseLineGUI
 
         private void fixSelectedButton_Click(object sender, System.EventArgs e)
         {
+            List<RuleItem> rules = RulesStorage.GetRules();//创建检测项容器
 
+            for (int i = 0; i < rules.Count; i++)//遍历容器执行查询
+            {
+                RuleItem rule = rules[i];
+                if (rule is RegistryRule registryRule)
+                {
+                    if(rule.IsSelectedToFix)
+                    {
+                        RulesCheckImpl.FixRegistryRule(registryRule);
+                    }
+                }
+                else if (rule is AuditPolicyRule auditPolicyRule)
+                {
+                    if (rule.IsSelectedToFix)
+                    {
+                        RulesCheckImpl.FixAuditpolRule(auditPolicyRule);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("未知规则类型。");
+                }
+            }
+            refreshTable();//刷新表格
         }
 
         private void buttonExportFile_Click(object sender, System.EventArgs e)
         {
-
+            DataExport.DataExport.ExportData();
         }
 
         /// <summary>
@@ -80,35 +104,49 @@ namespace BaseLineGUI
         /// </summary>
         private void refreshTable()
         {
-            this.dataGridOverview.Rows.Clear();
             List<RuleItem> rules = RulesStorage.GetRules();
-            foreach (RuleItem rule in rules)
+            refreshSingleTable(dataGridOverview, rules);
+            refreshSingleTable(dataGridAccount, rules.FindAll(e => e.Page == "账户策略"));
+            refreshSingleTable(dataGridLogs, rules.FindAll(e => e.Page == "日志"));
+            refreshSingleTable(dataGridNetwork, rules.FindAll(e => e.Page == "网络配置"));
+            refreshSingleTable(dataGridOthers, rules.FindAll(e => e.Page == "其他配置"));
+        }
+
+        /// <summary>
+        /// 填充单个DataGridView
+        /// </summary>
+        private void refreshSingleTable(DataGridView dataGridView, List<RuleItem> rules)
+        {
+            dataGridView.Rows.Clear();
+            for(int i = 0; i < rules.Count; i++)
             {
                 // 分不同规则类型进行处理
-                if (rule is RegistryRule rule1)
+                if (rules[i] is RegistryRule rule1)
                 {
-                    this.dataGridOverview.Rows.Add(
-                        rule.ItemName,
+                    dataGridView.Rows.Add(
+                        i,
+                        rule1.ItemName,
                         "注册表",
                         rule1.RegistryPath,
                         rule1.RegistryName,
                         rule1.ExpectedValue,
                         rule1.DetectedValue,
-                        CheckResultClass.GetCheckResultName(rule.CheckResult),
-                        rule.IsSelectedToFix
+                        CheckResultClass.GetCheckResultName(rule1.CheckResult),
+                        rule1.IsSelectedToFix
                     );
                 }
-                else if (rule is AuditPolicyRule rule2)
+                else if (rules[i] is AuditPolicyRule rule2)
                 {
-                    this.dataGridOverview.Rows.Add(
-                        rule.ItemName,
+                    dataGridView.Rows.Add(
+                        i,
+                        rule2.ItemName,
                         "审计策略",
                         "",
                         rule2.SubCategory,
                         rule2.ExpectedValueString,
                         rule2.DetectedValueString,
-                        CheckResultClass.GetCheckResultName(rule.CheckResult),
-                        rule.IsSelectedToFix
+                        CheckResultClass.GetCheckResultName(rule2.CheckResult),
+                        rule2.IsSelectedToFix
                     );
                 }
                 else
@@ -116,12 +154,12 @@ namespace BaseLineGUI
                     MessageBox.Show("未知规则类型");
                 }
             }
-            this.dataGridOverview.AutoResizeColumn(0);
-            this.dataGridOverview.AutoResizeColumn(1);
-            this.dataGridOverview.AutoResizeColumn(3);
-            this.dataGridOverview.AutoResizeColumn(4);
-            this.dataGridOverview.AutoResizeColumn(5);
-            this.dataGridOverview.AutoResizeColumn(6);
+            dataGridView.AutoResizeColumn(0);
+            dataGridView.AutoResizeColumn(2);
+            dataGridView.AutoResizeColumn(4);
+            dataGridView.AutoResizeColumn(5);
+            dataGridView.AutoResizeColumn(6);
+            dataGridView.AutoResizeColumn(7);
         }
 
         /// <summary>

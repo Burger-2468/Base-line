@@ -107,10 +107,10 @@ bool SecurityPolicyHelper::GetAuditPolicy(
     return true;
 }
 
-bool SecurityPolicyHelper::SetAuditPolicy(const std::string& auditCategory,
+bool SecurityPolicyHelper::SetAuditPolicy(
     const std::string& auditSubcategory,
     bool auditSuccess, bool auditFailure) {
-    std::string command = "/set /subcategory:\"" + auditCategory + "\\" + auditSubcategory + "\"";
+    std::string command = "/set /subcategory:" + auditSubcategory;
 
     if (auditSuccess && auditFailure) {
         command += " /success:enable /failure:enable";

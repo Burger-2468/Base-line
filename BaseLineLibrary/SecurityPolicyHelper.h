@@ -12,7 +12,7 @@ public:
         const std::string& auditSubcategory,
         bool& auditSuccess, bool& auditFailure);
     //这个函数是用来获取Windows审核策略的
-    static bool SetAuditPolicy(const std::string& auditCategory,
+    static bool SetAuditPolicy(
         const std::string& auditSubcategory,
         bool auditSuccess, bool auditFailure);
     //这个函数是用来设置Windows审核策略的
