@@ -69,7 +69,7 @@ bool SecurityPolicyHelper::GetAuditPolicy(const std::string& auditCategory,
     }
 
     // 使用正则表达式解析输出
-    std::regex successRegex("Success:\\s+(\\w+)");
+    std::regex successRegex("Success:\\s+(\\w+)");  // TODO: 修改英文显示！ 修改英文显示！！ 修改英文显示！！
     std::regex failureRegex("Failure:\\s+(\\w+)");
 
     std::smatch successMatch, failureMatch;
@@ -77,6 +77,9 @@ bool SecurityPolicyHelper::GetAuditPolicy(const std::string& auditCategory,
     auditSuccess = false;
     auditFailure = false;
 
+    // TODO: 修改英文显示！！
+    // TODO: 修改英文显示！！
+    // TODO: 修改英文显示！！
     if (std::regex_search(output, successMatch, successRegex) && successMatch.size() > 1) {
         auditSuccess = (successMatch[1] == "Enable");
     }
