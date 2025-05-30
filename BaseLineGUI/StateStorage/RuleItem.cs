@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -10,6 +11,7 @@ namespace BaseLineGUI.StateStorage
     /// </summary>
     public abstract class RuleItem
     {
+        private int index;
         private readonly string itemName;
         private bool isSelectedToFix = false;
         private CheckResult checkResult = CheckResult.NotChecked;
@@ -19,6 +21,15 @@ namespace BaseLineGUI.StateStorage
         {
             this.itemName = itemName;
             this.page = page;
+        }
+
+        /// <summary>
+        /// 规则项编号，用于在规则列表中唯一标识该项
+        /// </summary>
+        public int Index
+        {
+            get { return index; }
+            set { index = value; }
         }
 
         /// <summary>

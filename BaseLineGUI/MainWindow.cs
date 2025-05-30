@@ -24,19 +24,21 @@ namespace BaseLineGUI
         /// <summary>
         /// 处理用户点击复选框选中规则的操作
         /// </summary>
-        private void dataGridOverview_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 7)
+            
+            if (e.ColumnIndex == 8 && sender is DataGridView dataGridView)
             {
                 // 获取当前行
-                DataGridViewRow row = this.dataGridOverview.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridView.Rows[e.RowIndex];
                 // 获取当前行的规则项
                 RuleItem rule = RulesStorage.GetRules()[(int)row.Cells[0].Value];
                 // 改变选中状态
                 rule.IsSelectedToFix = !rule.IsSelectedToFix;
                 // 更新选中状态
-                row.Cells[7].Value = rule.IsSelectedToFix;
+                row.Cells[8].Value = rule.IsSelectedToFix;
             }
+
         }
 
         private void checkButton_Click(object sender, System.EventArgs e)
@@ -118,13 +120,13 @@ namespace BaseLineGUI
         private void refreshSingleTable(DataGridView dataGridView, List<RuleItem> rules)
         {
             dataGridView.Rows.Clear();
-            for(int i = 0; i < rules.Count; i++)
+            foreach(RuleItem rule in rules)
             {
                 // 分不同规则类型进行处理
-                if (rules[i] is RegistryRule rule1)
+                if (rule is RegistryRule rule1)
                 {
                     dataGridView.Rows.Add(
-                        i,
+                        rule.Index,
                         rule1.ItemName,
                         "注册表",
                         rule1.RegistryPath,
@@ -135,10 +137,10 @@ namespace BaseLineGUI
                         rule1.IsSelectedToFix
                     );
                 }
-                else if (rules[i] is AuditPolicyRule rule2)
+                else if (rule is AuditPolicyRule rule2)
                 {
                     dataGridView.Rows.Add(
-                        i,
+                        rule.Index,
                         rule2.ItemName,
                         "审计策略",
                         "",
@@ -176,6 +178,14 @@ namespace BaseLineGUI
                 }
             }
             refreshTable(); // 刷新表格显示
+        }
+
+        /// <summary>
+        /// 选项卡切换事件处理函数
+        /// </summary>
+        private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            refreshTable(); // 切换选项卡时刷新表格显示
         }
     }
 }

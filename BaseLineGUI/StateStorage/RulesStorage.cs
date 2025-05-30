@@ -20,6 +20,7 @@ namespace BaseLineGUI.StateStorage
         /// </summary>
         public static void AddRule(RuleItem rule)
         {
+            rule.Index = rules.Count; // 设置规则项的索引为当前列表的长度
             rules.Add(rule);
         }
 
@@ -28,6 +29,7 @@ namespace BaseLineGUI.StateStorage
         /// </summary>
         public static void RemoveRule(RuleItem rule)
         {
+            rule.Index = rules.Count; // 设置规则项的索引为当前列表的长度
             rules.Remove(rule);
         }
 
