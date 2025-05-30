@@ -101,7 +101,7 @@ namespace BaseLineGUI.RulesChecker
             //DllFunctions.DllFunctions.FixAuditpolRule(subCategory, expectedValue, out resultStruct);
             DllFunctions.DllFunctions.FixAuditpolRule("{0CCE9211-69AE-11D9-BED3-505054503030}", 1, out resultStruct);
             // 获取修复结果  
-            if (resultStruct.status == 0)
+            if (resultStruct.status == 0)// 0表示修复成功
             {
                 ruleItem.CheckResult = CheckResult.Fixed;
             }

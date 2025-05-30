@@ -72,14 +72,14 @@ namespace BaseLineGUI
             for (int i = 0; i < rules.Count; i++)//遍历容器执行查询
             {
                 RuleItem rule = rules[i];
-                if (rule is RegistryRule registryRule)
+                if (rule is RegistryRule registryRule)//判断规则类型：注册表
                 {
                     if(rule.IsSelectedToFix)
                     {
                         RulesCheckImpl.FixRegistryRule(registryRule);
                     }
                 }
-                else if (rule is AuditPolicyRule auditPolicyRule)
+                else if (rule is AuditPolicyRule auditPolicyRule)//判断规则类型：审计策略
                 {
                     if (rule.IsSelectedToFix)
                     {
