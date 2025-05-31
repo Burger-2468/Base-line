@@ -93,7 +93,7 @@
             this.selectAllButton = new System.Windows.Forms.Button();
             this.buttonExportFile = new System.Windows.Forms.Button();
             this.bottomLeftTextPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.accuracyLabel = new System.Windows.Forms.Label();
             this.tabControlContainerPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -120,10 +120,11 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1570, 57);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1047, 38);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -131,9 +132,10 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1564, 57);
+            this.label1.Size = new System.Drawing.Size(1043, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Windows Server 2016 基线卫士";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -147,19 +149,21 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1570, 608);
+            this.tabControl1.Size = new System.Drawing.Size(1047, 405);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dataGridOverview);
-            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1562, 576);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Size = new System.Drawing.Size(1039, 379);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "全部";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -182,12 +186,13 @@
             this.ColumnSelected});
             this.dataGridOverview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridOverview.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridOverview.Location = new System.Drawing.Point(3, 3);
+            this.dataGridOverview.Location = new System.Drawing.Point(2, 2);
+            this.dataGridOverview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridOverview.Name = "dataGridOverview";
             this.dataGridOverview.ReadOnly = true;
             this.dataGridOverview.RowHeadersWidth = 62;
             this.dataGridOverview.RowTemplate.Height = 30;
-            this.dataGridOverview.Size = new System.Drawing.Size(1556, 570);
+            this.dataGridOverview.Size = new System.Drawing.Size(1035, 375);
             this.dataGridOverview.TabIndex = 0;
             this.dataGridOverview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             // 
@@ -198,7 +203,7 @@
             this.Id.MinimumWidth = 8;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
-            this.Id.Width = 75;
+            this.Id.Width = 51;
             // 
             // ColumnRuleName
             // 
@@ -270,15 +275,16 @@
             this.ColumnSelected.MinimumWidth = 8;
             this.ColumnSelected.Name = "ColumnSelected";
             this.ColumnSelected.ReadOnly = true;
-            this.ColumnSelected.Width = 45;
+            this.ColumnSelected.Width = 32;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridAccount);
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1562, 576);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Size = new System.Drawing.Size(1039, 379);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "账户策略";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -301,12 +307,13 @@
             this.dataGridViewCheckBoxColumn1});
             this.dataGridAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridAccount.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridAccount.Location = new System.Drawing.Point(3, 3);
+            this.dataGridAccount.Location = new System.Drawing.Point(2, 2);
+            this.dataGridAccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridAccount.Name = "dataGridAccount";
             this.dataGridAccount.ReadOnly = true;
             this.dataGridAccount.RowHeadersWidth = 62;
             this.dataGridAccount.RowTemplate.Height = 30;
-            this.dataGridAccount.Size = new System.Drawing.Size(1556, 570);
+            this.dataGridAccount.Size = new System.Drawing.Size(1035, 375);
             this.dataGridAccount.TabIndex = 1;
             this.dataGridAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             // 
@@ -317,7 +324,7 @@
             this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 75;
+            this.dataGridViewTextBoxColumn1.Width = 51;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -389,15 +396,16 @@
             this.dataGridViewCheckBoxColumn1.MinimumWidth = 8;
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 45;
+            this.dataGridViewCheckBoxColumn1.Width = 32;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dataGridLogs);
-            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1562, 576);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Size = new System.Drawing.Size(1039, 379);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "日志";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -420,12 +428,13 @@
             this.dataGridViewCheckBoxColumn2});
             this.dataGridLogs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridLogs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridLogs.Location = new System.Drawing.Point(3, 3);
+            this.dataGridLogs.Location = new System.Drawing.Point(2, 2);
+            this.dataGridLogs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridLogs.Name = "dataGridLogs";
             this.dataGridLogs.ReadOnly = true;
             this.dataGridLogs.RowHeadersWidth = 62;
             this.dataGridLogs.RowTemplate.Height = 30;
-            this.dataGridLogs.Size = new System.Drawing.Size(1556, 570);
+            this.dataGridLogs.Size = new System.Drawing.Size(1035, 375);
             this.dataGridLogs.TabIndex = 1;
             this.dataGridLogs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             // 
@@ -436,7 +445,7 @@
             this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 75;
+            this.dataGridViewTextBoxColumn8.Width = 51;
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -508,15 +517,16 @@
             this.dataGridViewCheckBoxColumn2.MinimumWidth = 8;
             this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
             this.dataGridViewCheckBoxColumn2.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn2.Width = 45;
+            this.dataGridViewCheckBoxColumn2.Width = 32;
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.dataGridNetwork);
-            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1562, 576);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage4.Size = new System.Drawing.Size(1039, 379);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "网络配置";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -539,12 +549,13 @@
             this.dataGridViewCheckBoxColumn3});
             this.dataGridNetwork.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridNetwork.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridNetwork.Location = new System.Drawing.Point(3, 3);
+            this.dataGridNetwork.Location = new System.Drawing.Point(2, 2);
+            this.dataGridNetwork.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridNetwork.Name = "dataGridNetwork";
             this.dataGridNetwork.ReadOnly = true;
             this.dataGridNetwork.RowHeadersWidth = 62;
             this.dataGridNetwork.RowTemplate.Height = 30;
-            this.dataGridNetwork.Size = new System.Drawing.Size(1556, 570);
+            this.dataGridNetwork.Size = new System.Drawing.Size(1035, 375);
             this.dataGridNetwork.TabIndex = 1;
             this.dataGridNetwork.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             // 
@@ -555,7 +566,7 @@
             this.dataGridViewTextBoxColumn15.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.Width = 75;
+            this.dataGridViewTextBoxColumn15.Width = 51;
             // 
             // dataGridViewTextBoxColumn16
             // 
@@ -627,15 +638,16 @@
             this.dataGridViewCheckBoxColumn3.MinimumWidth = 8;
             this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
             this.dataGridViewCheckBoxColumn3.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn3.Width = 45;
+            this.dataGridViewCheckBoxColumn3.Width = 32;
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.dataGridOthers);
-            this.tabPage5.Location = new System.Drawing.Point(4, 28);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1562, 576);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage5.Size = new System.Drawing.Size(1039, 379);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "其他配置";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -658,12 +670,13 @@
             this.dataGridViewCheckBoxColumn4});
             this.dataGridOthers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridOthers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridOthers.Location = new System.Drawing.Point(3, 3);
+            this.dataGridOthers.Location = new System.Drawing.Point(2, 2);
+            this.dataGridOthers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridOthers.Name = "dataGridOthers";
             this.dataGridOthers.ReadOnly = true;
             this.dataGridOthers.RowHeadersWidth = 62;
             this.dataGridOthers.RowTemplate.Height = 30;
-            this.dataGridOthers.Size = new System.Drawing.Size(1556, 570);
+            this.dataGridOthers.Size = new System.Drawing.Size(1035, 375);
             this.dataGridOthers.TabIndex = 1;
             this.dataGridOthers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             // 
@@ -674,7 +687,7 @@
             this.dataGridViewTextBoxColumn22.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
             this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            this.dataGridViewTextBoxColumn22.Width = 75;
+            this.dataGridViewTextBoxColumn22.Width = 51;
             // 
             // dataGridViewTextBoxColumn23
             // 
@@ -746,16 +759,17 @@
             this.dataGridViewCheckBoxColumn4.MinimumWidth = 8;
             this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
             this.dataGridViewCheckBoxColumn4.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn4.Width = 45;
+            this.dataGridViewCheckBoxColumn4.Width = 32;
             // 
             // panelBottomContainer
             // 
             this.panelBottomContainer.Controls.Add(this.bottomButtonsPanel);
             this.panelBottomContainer.Controls.Add(this.bottomLeftTextPanel);
             this.panelBottomContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottomContainer.Location = new System.Drawing.Point(0, 665);
+            this.panelBottomContainer.Location = new System.Drawing.Point(0, 443);
+            this.panelBottomContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelBottomContainer.Name = "panelBottomContainer";
-            this.panelBottomContainer.Size = new System.Drawing.Size(1570, 99);
+            this.panelBottomContainer.Size = new System.Drawing.Size(1047, 66);
             this.panelBottomContainer.TabIndex = 0;
             // 
             // bottomButtonsPanel
@@ -770,19 +784,21 @@
             this.bottomButtonsPanel.Controls.Add(this.selectAllButton, 1, 0);
             this.bottomButtonsPanel.Controls.Add(this.buttonExportFile, 3, 0);
             this.bottomButtonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bottomButtonsPanel.Location = new System.Drawing.Point(670, 0);
+            this.bottomButtonsPanel.Location = new System.Drawing.Point(447, 0);
+            this.bottomButtonsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bottomButtonsPanel.Name = "bottomButtonsPanel";
             this.bottomButtonsPanel.RowCount = 1;
             this.bottomButtonsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.bottomButtonsPanel.Size = new System.Drawing.Size(900, 99);
+            this.bottomButtonsPanel.Size = new System.Drawing.Size(600, 66);
             this.bottomButtonsPanel.TabIndex = 1;
             // 
             // checkButton
             // 
             this.checkButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkButton.Location = new System.Drawing.Point(3, 3);
+            this.checkButton.Location = new System.Drawing.Point(2, 2);
+            this.checkButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkButton.Name = "checkButton";
-            this.checkButton.Size = new System.Drawing.Size(219, 93);
+            this.checkButton.Size = new System.Drawing.Size(146, 62);
             this.checkButton.TabIndex = 2;
             this.checkButton.Text = "检测";
             this.checkButton.UseVisualStyleBackColor = true;
@@ -792,9 +808,10 @@
             // 
             this.fixSelectedButton.AutoSize = true;
             this.fixSelectedButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fixSelectedButton.Location = new System.Drawing.Point(453, 3);
+            this.fixSelectedButton.Location = new System.Drawing.Point(302, 2);
+            this.fixSelectedButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.fixSelectedButton.Name = "fixSelectedButton";
-            this.fixSelectedButton.Size = new System.Drawing.Size(219, 93);
+            this.fixSelectedButton.Size = new System.Drawing.Size(146, 62);
             this.fixSelectedButton.TabIndex = 0;
             this.fixSelectedButton.Text = "修复所选项";
             this.fixSelectedButton.UseVisualStyleBackColor = true;
@@ -804,9 +821,10 @@
             // 
             this.selectAllButton.AutoSize = true;
             this.selectAllButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selectAllButton.Location = new System.Drawing.Point(228, 3);
+            this.selectAllButton.Location = new System.Drawing.Point(152, 2);
+            this.selectAllButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.selectAllButton.Name = "selectAllButton";
-            this.selectAllButton.Size = new System.Drawing.Size(219, 93);
+            this.selectAllButton.Size = new System.Drawing.Size(146, 62);
             this.selectAllButton.TabIndex = 1;
             this.selectAllButton.Text = "全选";
             this.selectAllButton.UseVisualStyleBackColor = true;
@@ -815,9 +833,10 @@
             // buttonExportFile
             // 
             this.buttonExportFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonExportFile.Location = new System.Drawing.Point(678, 3);
+            this.buttonExportFile.Location = new System.Drawing.Point(452, 2);
+            this.buttonExportFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonExportFile.Name = "buttonExportFile";
-            this.buttonExportFile.Size = new System.Drawing.Size(219, 93);
+            this.buttonExportFile.Size = new System.Drawing.Size(146, 62);
             this.buttonExportFile.TabIndex = 3;
             this.buttonExportFile.Text = "导出报表";
             this.buttonExportFile.UseVisualStyleBackColor = true;
@@ -827,46 +846,48 @@
             // 
             this.bottomLeftTextPanel.ColumnCount = 1;
             this.bottomLeftTextPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bottomLeftTextPanel.Controls.Add(this.label2, 0, 0);
+            this.bottomLeftTextPanel.Controls.Add(this.accuracyLabel, 0, 0);
             this.bottomLeftTextPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.bottomLeftTextPanel.Location = new System.Drawing.Point(0, 0);
+            this.bottomLeftTextPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bottomLeftTextPanel.Name = "bottomLeftTextPanel";
             this.bottomLeftTextPanel.RowCount = 1;
             this.bottomLeftTextPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bottomLeftTextPanel.Size = new System.Drawing.Size(496, 99);
+            this.bottomLeftTextPanel.Size = new System.Drawing.Size(331, 66);
             this.bottomLeftTextPanel.TabIndex = 0;
             // 
-            // label2
+            // accuracyLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(490, 99);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "合格率：100%";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.accuracyLabel.AutoSize = true;
+            this.accuracyLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.accuracyLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.accuracyLabel.ForeColor = System.Drawing.Color.Red;
+            this.accuracyLabel.Location = new System.Drawing.Point(2, 0);
+            this.accuracyLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.accuracyLabel.Name = "accuracyLabel";
+            this.accuracyLabel.Size = new System.Drawing.Size(327, 66);
+            this.accuracyLabel.TabIndex = 0;
+            this.accuracyLabel.Text = "请点击“检测”按钮开始检测";
+            this.accuracyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabControlContainerPanel
             // 
             this.tabControlContainerPanel.Controls.Add(this.tabControl1);
             this.tabControlContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlContainerPanel.Location = new System.Drawing.Point(0, 57);
-            this.tabControlContainerPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControlContainerPanel.Location = new System.Drawing.Point(0, 38);
             this.tabControlContainerPanel.Name = "tabControlContainerPanel";
-            this.tabControlContainerPanel.Size = new System.Drawing.Size(1570, 608);
+            this.tabControlContainerPanel.Size = new System.Drawing.Size(1047, 405);
             this.tabControlContainerPanel.TabIndex = 2;
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1570, 764);
+            this.ClientSize = new System.Drawing.Size(1047, 509);
             this.Controls.Add(this.tabControlContainerPanel);
             this.Controls.Add(this.panelBottomContainer);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainWindow";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainWindow_Load);
@@ -905,7 +926,7 @@
         private System.Windows.Forms.Panel panelBottomContainer;
         private System.Windows.Forms.Button checkButton;
         private System.Windows.Forms.TableLayoutPanel bottomLeftTextPanel;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label accuracyLabel;
         private System.Windows.Forms.TableLayoutPanel bottomButtonsPanel;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;

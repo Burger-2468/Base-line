@@ -2,7 +2,6 @@
 using BaseLineGUI.RulesLoader;
 using BaseLineGUI.StateStorage;
 using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
 
 namespace BaseLineGUI
@@ -10,6 +9,9 @@ namespace BaseLineGUI
 
     public partial class MainWindow : Form
     {
+        private readonly string defaultAccuracyLabelText = "请点击“检测”按钮开始检测！";
+        private readonly string fixSuccessfulAccutacyLabelText = "修复成功！请点击“检测”按钮再次检测。";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -19,6 +21,7 @@ namespace BaseLineGUI
         {
             // 将规则列表中的规则项添加到DataGridView中
             refreshTable();
+            accuracyLabel.Text = defaultAccuracyLabelText;
         }
 
         /// <summary>
@@ -26,7 +29,7 @@ namespace BaseLineGUI
         /// </summary>
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             if (e.ColumnIndex == 8 && sender is DataGridView dataGridView)
             {
                 // 获取当前行
@@ -44,11 +47,13 @@ namespace BaseLineGUI
         private void checkButton_Click(object sender, System.EventArgs e)
         {
             List<RuleItem> rules = RulesStorage.GetRules();//创建检测项容器
+            int checkedCount = 0;//已检测的规则数量
+            int passedCount = 0;//通过检测的规则数量
+            int notCheckedCount = 0;//未检测的规则数量
 
             for (int i = 0; i < rules.Count; i++)//遍历容器执行查询
             {
                 RuleItem rule = rules[i];
-
 
                 if (rule is RegistryRule registryRule)
                 {
@@ -62,9 +67,26 @@ namespace BaseLineGUI
                 {
                     MessageBox.Show("未知规则类型。");
                 }
-            }
-            refreshTable();//刷新表格
 
+                // 更新统计数据
+                if (rule.CheckResult != CheckResult.NotChecked)
+                {
+                    checkedCount++;
+                    if (rule.CheckResult == CheckResult.Passed)
+                    {
+                        passedCount++;
+                    }
+                }
+                else
+                {
+                    notCheckedCount++;
+                }
+            }
+
+            // 计算统计数据并更新界面
+            accuracyLabel.Text = $"合格率：{(((float)passedCount / checkedCount) * 100).ToString("0.00")}%（{passedCount}/{checkedCount}），未检测：{notCheckedCount}";
+
+            refreshTable();//刷新表格
         }
 
         private void fixSelectedButton_Click(object sender, System.EventArgs e)
@@ -76,14 +98,14 @@ namespace BaseLineGUI
                 RuleItem rule = rules[i];
                 if (rule is RegistryRule registryRule)//判断规则类型：注册表
                 {
-                    if(rule.IsSelectedToFix)
+                    if (rule.IsSelectedToFix && rule.CheckResult != CheckResult.Passed)
                     {
                         RulesCheckImpl.FixRegistryRule(registryRule);
                     }
                 }
                 else if (rule is AuditPolicyRule auditPolicyRule)//判断规则类型：审计策略
                 {
-                    if (rule.IsSelectedToFix)
+                    if (rule.IsSelectedToFix && rule.CheckResult != CheckResult.Passed)
                     {
                         RulesCheckImpl.FixAuditpolRule(auditPolicyRule);
                     }
@@ -93,6 +115,10 @@ namespace BaseLineGUI
                     MessageBox.Show("未知规则类型。");
                 }
             }
+
+            // 更新提示数据
+            accuracyLabel.Text = fixSuccessfulAccutacyLabelText;
+
             refreshTable();//刷新表格
         }
 
@@ -120,7 +146,7 @@ namespace BaseLineGUI
         private void refreshSingleTable(DataGridView dataGridView, List<RuleItem> rules)
         {
             dataGridView.Rows.Clear();
-            foreach(RuleItem rule in rules)
+            foreach (RuleItem rule in rules)
             {
                 // 分不同规则类型进行处理
                 if (rule is RegistryRule rule1)
@@ -172,7 +198,7 @@ namespace BaseLineGUI
             List<RuleItem> rules = RulesStorage.GetRules();
             foreach (RuleItem rule in rules)
             {
-                if(rule.CheckResult == CheckResult.NotPassed)
+                if (rule.CheckResult == CheckResult.NotPassed)
                 {
                     rule.IsSelectedToFix = true;
                 }
