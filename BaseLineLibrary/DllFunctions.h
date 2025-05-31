@@ -1,12 +1,13 @@
 #pragma once
 
 #include <windows.h>
-#include "SecurityChecker.h"
+// #include "SecurityChecker.h"
 #include <vector>
 #include <string>
 
 struct CheckResult_CSharp {
-	// 0: 正确，1: 错误，2: 检测失败
+	// 对于CheckRegistryRule：0=正确，1=错误，2=注册表路径不存在，3=注册表项不存在，4=其他错误
+	// 对于FixRegistryRule：0=成功，1=失败
 	int status;
 	// 检测到的值
 	char value[1024];

@@ -13,6 +13,9 @@ namespace BaseLineGUI.StateStorage
         NotChecked,
         Passed,
         NotPassed,
+        PathNotExist,
+        RegistryItemNotExist,
+        AuditpolItemNotExist,
         Failed,
         Fixed,
         FixFailed
@@ -33,6 +36,12 @@ namespace BaseLineGUI.StateStorage
                     return "通过";
                 case CheckResult.NotPassed:
                     return "未通过";
+                case CheckResult.PathNotExist:
+                    return "注册表路径不存在";
+                case CheckResult.RegistryItemNotExist:
+                    return "注册表项不存在";
+                case CheckResult.AuditpolItemNotExist:
+                    return "没有这个审计策略项，无需检查";
                 case CheckResult.Failed:
                     return "检测失败";
                 case CheckResult.Fixed:

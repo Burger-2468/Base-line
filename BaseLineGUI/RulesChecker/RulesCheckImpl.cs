@@ -15,13 +15,13 @@ namespace BaseLineGUI.RulesChecker
         {
 
             string registryPath = ruleItem.RegistryPath;
-            string itemName = ruleItem.ItemName;
+            string itemName = ruleItem.RegistryName;
             string itemType = ruleItem.ValueType;
             string expectedValue = ruleItem.ExpectedValue;
             CheckResultStruct resultStruct;
             // 对注册表值类型进行预处理
-            itemType = itemType.Replace("REG_", ""); // 去掉前缀
-            itemType = itemType.Replace("SZ", "STRING"); // 将SZ转换为STRING
+            //itemType = itemType.Replace("REG_", ""); // 去掉前缀
+            //itemType = itemType.Replace("SZ", "STRING"); // 将SZ转换为STRING
             //DllFunctions.DllFunctions.CheckRegistryRule("HKEY_LOCAL_MACHINE", "ServiceLastKnownStatus", "DWORD", "2", out resultStruct);
             DllFunctions.DllFunctions.CheckRegistryRule(registryPath, itemName, itemType, expectedValue, out resultStruct);
             // 获取检测结果  
@@ -29,7 +29,8 @@ namespace BaseLineGUI.RulesChecker
             {
                 case 0: ruleItem.CheckResult = CheckResult.Passed; break;
                 case 1: ruleItem.CheckResult = CheckResult.NotPassed; break;
-                case 2: ruleItem.CheckResult = CheckResult.Failed; break;
+                case 2: ruleItem.CheckResult = CheckResult.PathNotExist; break;
+                case 3: ruleItem.CheckResult = CheckResult.RegistryItemNotExist; break;
                 default: ruleItem.CheckResult = CheckResult.Failed; break;
             }
             // 获取检测值
@@ -41,28 +42,28 @@ namespace BaseLineGUI.RulesChecker
         /// </summary>
         public static void CheckAuditpolRule(AuditPolicyRule ruleItem)
         {
-            string subCategory = ruleItem.SubCategory;
-            int expectedValue = ruleItem.ExpectedValue;
-            CheckResultStruct resultStruct;
-            DllFunctions.DllFunctions.CheckAuditpolRule(subCategory, expectedValue, out resultStruct);
-            //DllFunctions.DllFunctions.CheckAuditpolRule("{0CCE9210-69AE-11D9-BED3-505054503030}", 0, out resultStruct);
-            // 获取检测结果  
-            switch (resultStruct.status)
-            {
-                case 0: ruleItem.CheckResult = CheckResult.Passed; break;
-                case 1: ruleItem.CheckResult = CheckResult.NotPassed; break;
-                case 2: ruleItem.CheckResult = CheckResult.Failed; break;
-                default: ruleItem.CheckResult = CheckResult.Failed; break;
-            }
-            // 获取检测值
-            if (ruleItem.CheckResult == CheckResult.Failed)
-            {
-                ruleItem.DetectedValue = -1;
-            }
-            else
-            {
-                ruleItem.DetectedValue = int.Parse(resultStruct.value);
-            }
+            //string subCategory = ruleItem.SubCategory;
+            //int expectedValue = ruleItem.ExpectedValue;
+            //CheckResultStruct resultStruct;
+            //DllFunctions.DllFunctions.CheckAuditpolRule(subCategory, expectedValue, out resultStruct);
+            ////DllFunctions.DllFunctions.CheckAuditpolRule("{0CCE9210-69AE-11D9-BED3-505054503030}", 0, out resultStruct);
+            //// 获取检测结果  
+            //switch (resultStruct.status)
+            //{
+            //    case 0: ruleItem.CheckResult = CheckResult.Passed; break;
+            //    case 1: ruleItem.CheckResult = CheckResult.NotPassed; break;
+            //    case 2: ruleItem.CheckResult = CheckResult.Failed; break;
+            //    default: ruleItem.CheckResult = CheckResult.Failed; break;
+            //}
+            //// 获取检测值
+            //if (ruleItem.CheckResult == CheckResult.Failed)
+            //{
+            //    ruleItem.DetectedValue = -1;
+            //}
+            //else
+            //{
+            //    ruleItem.DetectedValue = int.Parse(resultStruct.value);
+            //}
         }
 
         /// <summary>
@@ -71,20 +72,21 @@ namespace BaseLineGUI.RulesChecker
         public static void FixRegistryRule(RegistryRule ruleItem)
         {
             string registryPath = ruleItem.RegistryPath;
-            string itemName = ruleItem.ItemName;
+            string itemName = ruleItem.RegistryName;
             string itemType = ruleItem.ValueType;
             string expectedValue = ruleItem.ExpectedValue;
             // 对注册表值类型进行预处理
-            itemType = itemType.Replace("REG_", ""); // 去掉前缀
-            itemType = itemType.Replace("SZ", "STRING"); // 将SZ转换为STRING
+            //itemType = itemType.Replace("REG_", ""); // 去掉前缀
+            //itemType = itemType.Replace("SZ", "STRING"); // 将SZ转换为STRING
             CheckResultStruct resultStruct = new CheckResultStruct();
-            //DllFunctions.DllFunctions.FixRegistryRule(registryPath, itemName, itemType, expectedValue, out resultStruct);
+            DllFunctions.DllFunctions.FixRegistryRule(registryPath, itemName, itemType, expectedValue, out resultStruct);
             //DllFunctions.DllFunctions.FixRegistryRule("HKEY_LOCAL_MACHINE\\SOFTWARE\\7-Zip", "Path", "STRING", "C:\\Program Files\\7-Zip64\\", out resultStruct);
             // 获取修复结果
             if (resultStruct.status == 0)
             {
                 ruleItem.CheckResult = CheckResult.Fixed;
-            } else
+            }
+            else
             {
                 ruleItem.CheckResult = CheckResult.FixFailed;
             }
@@ -95,20 +97,20 @@ namespace BaseLineGUI.RulesChecker
         /// </summary>
         public static void FixAuditpolRule(AuditPolicyRule ruleItem)
         {
-            string subCategory = ruleItem.SubCategory;
-            int expectedValue = ruleItem.ExpectedValue;
-            CheckResultStruct resultStruct;
-            //DllFunctions.DllFunctions.FixAuditpolRule(subCategory, expectedValue, out resultStruct);
-            DllFunctions.DllFunctions.FixAuditpolRule("{0CCE9211-69AE-11D9-BED3-505054503030}", 1, out resultStruct);
-            // 获取修复结果  
-            if (resultStruct.status == 0)// 0表示修复成功
-            {
-                ruleItem.CheckResult = CheckResult.Fixed;
-            }
-            else
-            {
-                ruleItem.CheckResult = CheckResult.FixFailed;
-            }
+            //string subCategory = ruleItem.SubCategory;
+            //int expectedValue = ruleItem.ExpectedValue;
+            //CheckResultStruct resultStruct;
+            ////DllFunctions.DllFunctions.FixAuditpolRule(subCategory, expectedValue, out resultStruct);
+            //DllFunctions.DllFunctions.FixAuditpolRule("{0CCE9211-69AE-11D9-BED3-505054503030}", 1, out resultStruct);
+            //// 获取修复结果  
+            //if (resultStruct.status == 0)// 0表示修复成功
+            //{
+            //    ruleItem.CheckResult = CheckResult.Fixed;
+            //}
+            //else
+            //{
+            //    ruleItem.CheckResult = CheckResult.FixFailed;
+            //}
         }
     }
 }

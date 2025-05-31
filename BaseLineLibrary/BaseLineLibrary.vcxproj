@@ -141,16 +141,10 @@
   <ItemGroup>
     <ClInclude Include="DllFunctions.h" />
     <ClInclude Include="DllMain.h" />
-    <ClInclude Include="RegistryHelper.h" />
-    <ClInclude Include="SecurityChecker.h" />
-    <ClInclude Include="SecurityPolicyHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DllFunctions.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="RegistryHelper.cpp" />
-    <ClCompile Include="SecurityChecker.cpp" />
-    <ClCompile Include="SecurityPolicyHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\BaseLineGUI\Rules\原规则.txt" />
